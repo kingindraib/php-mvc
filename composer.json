@@ -1,0 +1,26 @@
+{
+    "name": "movie/movie",
+    "description": "Simple MVC PHP framework: for divya gyan college project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "app/"
+        ],
+         "files": [
+              "app/provider/ViewProvider.php"
+            ]
+    },
+    "require": {
+        "php": "^8.0.10",
+        "symfony/routing": "^6.0",
+        "symfony/http-foundation": "^6.0",
+        "symfony/dotenv": "^6.3",
+        "phpmailer/phpmailer": "^6.8"
+    },
+
+    "config": {
+        "platform-check": false
+    }
+}
