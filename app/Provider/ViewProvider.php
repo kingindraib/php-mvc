@@ -1,20 +1,15 @@
 <?php
 
-// namespace App\Provider;
+use Symfony\Component\Dotenv\Dotenv;
+$dotenv = new Dotenv();
+$dotenv->load('../.env');
+// require_once '../vendor/autoload.php';
+use Jenssegers\Blade\Blade;
+use Jenssegers\Blade\Compilers\BladeCompiler;
 
-// class ViewProvider{
-   
-//     public function boot()
-//     {
 
-//     }
 
-//     public function view($path,$data = '')
-//     {
-//         require_once 'views/' . $path . '.php';
-//     }
-        
-// }
+
 
 function redirect($url) {
     header("Location: " . $url);
@@ -28,15 +23,17 @@ function getCurrentURL() {
     return $protocol . '://' . $host . $uri;
 }
 
-// 
-// 
 
-
-function view($path,$data = '')
+function view($path,$data =[])
 {
-    // $currentURL = getCurrentURL();
-    // $url = $currentURL.'views/' . $path . '.php';
-    // require_once $url;
-    // redirect($url);
-    require_once APP_ROOT . '/views/'. $path . '.php';
+
+    $views = APP_ROOT . '/views/';
+    $cache = APP_ROOT . '/cache/';
+    
+    $blade = new Blade($views, $cache);
+    // echo $blade->render($path,$data);
+    echo $blade->make($path,$data)->render();
+    // require_once APP_ROOT . '/views/'. $path . '.php';
 }
+
+

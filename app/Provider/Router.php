@@ -33,7 +33,7 @@ class Router
                     $param = (int) $param;
                 }
             });
-            echo "<pre>";
+            // echo "<pre>";
             list($matcher['controller'], $action) = explode('@', $matcher['controller']);
             // print_r($action);
             // print_r($matcher['controller']);

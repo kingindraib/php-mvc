@@ -7,6 +7,9 @@ use Symfony\Component\Routing\RouteCollection;
 
 class PageController extends Controller
 {
+	public function index(RouteCollection $routes){
+		echo "test";
+	}
     // Homepage action
 	public function about(RouteCollection $routes)
 	{
@@ -15,11 +18,10 @@ class PageController extends Controller
         // require_once APP_ROOT . '/views/home/index.php';
 		// echo "hello";
 		// echo $id;
-		$data = "";
-		// include ('views/home/index.php');
-
+		print_r($routes);
+		$data = ['message' => 'Welcome to Bladettyyt!'];
 		// return view('home/index',$data);
-		return view('home/about');
+		return view('home/about',$data);
         
 	}
 

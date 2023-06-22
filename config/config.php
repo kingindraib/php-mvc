@@ -8,6 +8,8 @@ define('SITE_NAME', 'movie');
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
+define('APP_NAME','movie');
+define('HOST','http://localhost/');
 
 //DB Params
 define('DB_HOST', 'your-host');
