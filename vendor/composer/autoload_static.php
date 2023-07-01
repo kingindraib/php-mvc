@@ -17,6 +17,7 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '225d232fe3e800308e7b6f9df79bd35c' => __DIR__ . '/../..' . '/app/provider/ViewProvider.php',
         '167a62017ae3034589bec6be4f6b15a7' => __DIR__ . '/../..' . '/app/provider/helper.php',
+        'cfd768b27e646ae29fdd936285be7539' => __DIR__ . '/../..' . '/app/components/form.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -67,6 +68,7 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         ),
         'A' => 
         array (
+            'App\\Models\\' => 11,
             'App\\' => 4,
         ),
     );
@@ -170,6 +172,10 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'App\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Models',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -177,6 +183,8 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
     );
 
     public static $classMap = array (
+        'App\\Auth\\Authenticible' => __DIR__ . '/../..' . '/app/Auth/auth.php',
+        'App\\Auth\\HasAuthentiacible' => __DIR__ . '/../..' . '/app/Auth/AuthIntreface.php',
         'App\\Components\\Form' => __DIR__ . '/../..' . '/app/components/form.php',
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
         'App\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Controllers/PageController.php',
@@ -185,9 +193,11 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'App\\Controllers\\home\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/home/HomeController.php',
         'App\\Middleware\\AuthMiddleware' => __DIR__ . '/../..' . '/app/Middleware/AuthMiddleware.php',
         'App\\Middleware\\Middleware' => __DIR__ . '/../..' . '/app/Middleware/Middleware.php',
-        'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Models.php',
+        'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Model.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Provider\\DatabaseProvider' => __DIR__ . '/../..' . '/app/Provider/DatabaseProvider.php',
         'App\\Provider\\Router' => __DIR__ . '/../..' . '/app/Provider/Router.php',
+        'App\\Provider\\Validation' => __DIR__ . '/../..' . '/app/Provider/Validation.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',

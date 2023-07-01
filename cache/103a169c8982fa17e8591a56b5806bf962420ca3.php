@@ -1,0 +1,1 @@
+<h1>this is admin dashbord</h1><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/admin/index.blade.php ENDPATH**/ ?>

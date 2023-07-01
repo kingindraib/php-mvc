@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Majja KO TV</title>
+	<title>Movie || @yield('title')</title>
 		@include('home.includes.css')
 
 	<!-- sweet alert 2 -->

@@ -1,7 +1,7 @@
 <header>
     <div class="header">
         <div class="logo">
-            <img src="{{url('admin//images/logo.png')}}">
+            <img src="{{url('public/home/images/logo.png')}}">
         </div>
         <div class="menu">
             <div class="mobile_menu" style="display: none;">

@@ -3,14 +3,16 @@
     "description": "Simple MVC PHP framework: for divya gyan college project",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "App\\Models\\": "app/Models/"
         },
         "classmap": [
             "app/"
         ],
          "files": [
               "app/provider/ViewProvider.php",
-              "app/provider/helper.php"
+              "app/provider/helper.php",
+              "app/components/form.php"
             ]
     },
     "require": {

@@ -23,7 +23,7 @@ class Router
         try {
             $arrayUri = explode('?', $_SERVER['REQUEST_URI']);
             $matcher = $matcher->match($arrayUri[0]);
-            // print_r($matcher);
+            // print_r($matcher['_route']);
             // die();
             // Cast params to int if numeric
             array_walk($matcher, function(&$param)

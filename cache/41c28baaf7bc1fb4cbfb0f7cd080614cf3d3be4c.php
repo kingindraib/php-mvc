@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Majja KO TV</title>
+	<title>Movie || <?php echo $__env->yieldContent('title'); ?></title>
 		<?php echo $__env->make('home.includes.css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 	<!-- sweet alert 2 -->

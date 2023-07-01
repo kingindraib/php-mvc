@@ -9,6 +9,16 @@
 	<!-- font awsome js -->
 	<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
 	<!-- index.js -->
-	<script type="text/javascript" src="<?php echo e(url('admin/js/index.js')); ?>"></script>
+	<script type="text/javascript" src="<?php echo e(url('public/home/js/index.js')); ?>"></script>
 	<!-- sweet alert 2 js -->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/home/includes/js.blade.php ENDPATH**/ ?>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	
+	<script>
+		$(document).ready(function(){
+			$('#close-btn').click(function(){
+				$('#alert-message').hide(300);
+			})
+		});
+	</script>
+	<?php echo $__env->yieldPushContent('home_script'); ?><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/home/includes/js.blade.php ENDPATH**/ ?>

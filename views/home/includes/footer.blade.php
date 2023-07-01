@@ -16,9 +16,9 @@
                     </div>
                     <div class="col-md-3">
                         <h2 class="pb-4">Payment Partners</h2>
-                        <img src="images/esewa.jpg" alt="" class="footer_img">
-                        <img src="images/khalti.png" alt="" class="footer_img">
-                        <img src="images/fonepay.png" alt="" class="footer_img">
+                        <img src="{{url('public/home/images/esewa.jpg')}}" alt="" class="footer_img">
+                        <img src="{{url('public/home/images/khalti.png')}}" alt="" class="footer_img">
+                        <img src="{{url('public/home/images/fonepay.png')}}" alt="" class="footer_img">
                     </div>
                     <div class="col-md-3">
                         <h2 class="pb-4">Connect With Us</h2>
