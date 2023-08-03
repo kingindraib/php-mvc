@@ -31,7 +31,19 @@ class Validation{
                                 $errors[$credential] = ucfirst($credential) . ' must be a valid email address.';
                             }
                             break;
-                        // Add more validation rules as needed
+                        case 'confirm_password': // New confirmation rule
+                            $passwordField = $ruleParams[0] ?? 'password';
+                            $passwordValue = $credentials[$passwordField] ?? '';
+                            if ($value !== $passwordValue) {
+                                $errors[$credential] = ucfirst($credential) . ' must match the ' . $passwordField . '.';
+                            }
+                            break;
+                        // Add more validation rules as needed from here
+                        case 'int':
+                            if (!is_numeric($value)) {
+                                $errors[$credential] = ucfirst($credential) . ' must be an integer.';
+                            }
+                            break;
                     }
                 }
             } else {

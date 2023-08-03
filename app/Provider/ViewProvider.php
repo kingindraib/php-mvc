@@ -26,7 +26,6 @@ function getCurrentURL() {
 
 function view($path,$data =[])
 {
-
     $views = APP_ROOT . '/views/';
     $cache = APP_ROOT . '/cache/';
     

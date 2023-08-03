@@ -31,9 +31,13 @@ class Router
                 if(is_numeric($param)) 
                 {
                     $param = (int) $param;
+                 
                 }
             });
             // echo "<pre>";
+            // $param = 1;
+            // print_r($param);
+            // die();
             list($matcher['controller'], $action) = explode('@', $matcher['controller']);
             // print_r($action);
             // print_r($matcher['controller']);
@@ -46,9 +50,34 @@ class Router
             $className = '\\App\\Controllers\\' . $matcher['controller'];
             $classInstance = new $className();
     
+          
             // Add routes as paramaters to the next class
             $params = array_merge(array_slice($matcher, 2, -1), array('routes' => $routes));
-            call_user_func_array(array($classInstance, $matcher['method']), $params);
+            // unset($matcher['_route']);
+            // call_user_func_array(array($classInstance, $matcher['method']), $params);
+            // $id = is_numeric($matcher['parameters']['id']) ? (int) $matcher['parameters']['id'] : null;
+            // $id = (int)$matcher['id'] ?? '';
+            // call_user_func_array([$classInstance, $matcher['method']], [$id, $routes]); 
+            if(!empty($matcher['id'])){
+                call_user_func_array([$classInstance, $matcher['method']], [(int)$matcher['id'], $routes]); 
+            }else{
+                call_user_func_array(array($classInstance, $matcher['method']), $params);
+            }
+            
+
+
+            // Check if the "id" parameter exists
+        // if (isset($matcher['parameters']['id'])) {
+        //     // Cast the "id" parameter to an integer if necessary
+        //     $id = is_numeric($matcher['parameters']['id']) ? (int) $matcher['parameters']['id'] : null;
+        // } else {
+        //     $id = null; // Set "id" to null if it doesn't exist
+        // }
+
+        // // Pass the "id" parameter to the method call
+        // call_user_func_array(array($classInstance, $matcher['method']), array($id, $routes));
+
+
             
         } catch (MethodNotAllowedException $e) {
             echo 'Route method is not allowed.';

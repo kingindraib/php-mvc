@@ -8,6 +8,6 @@ class AdminController extends Controller
 {
     public function index(RouteCollection $routes)
     {
-        echo "admin home";
+        return view('admin.index');
     }
 }

@@ -7,5 +7,6 @@ use App\Auth\Authenticible;
 
 class User extends Model implements HasAuthentiacible{
     use Authenticible;
-    protected static $table = 'users';    
+    protected static $table = 'users';   
+    protected static $fillable = ['first_name','last_name','phone','email','birth','password']; 
 }

@@ -17,7 +17,7 @@ trait Authenticible{
                 'message' => 'Login successful',
                 'data' => $_SESSION['session_data'],
             ];
-            return true;
+            return $message;
         } else {
             $message = [
                 'success' => false,
@@ -37,7 +37,8 @@ trait Authenticible{
         $db = $databaseProvider->getDB();
        
         $table =static::$table;
-        // print_r($table);
+        // print_r($creadintial);
+        // die();
         
         // $placeholders = ':' . implode(', :', array_keys($creadintial));
         // $sql = "SELECT * FROM {$table} WHERE username = :username AND password = :password";

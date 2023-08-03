@@ -18,7 +18,6 @@ use App\Components\Form;
 				<div class="row">
 				   <div class="col-md-12">
 					{{Form::formgroup('Email','email','email','','','')}}
-					{{Form::formgroup('name','name','name','','','')}}
 				   </div>
 				   <div class="col-md-12">
 					{{Form::formgroup('Password','password','password','pass','','')}}

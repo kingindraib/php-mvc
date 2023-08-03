@@ -6,12 +6,20 @@
     <div class="container-main">
         <div class="owl-slider">
             <div class="owl-carousel owl-theme">
+                @forelse ($slider as $slideritem)
+                <?php $slideritem= obj($slideritem); ?>
                 <div class="item owl_slider_items">
-                    <img src="{{url('public/home/images/banner-1.jfif')}}" alt="" class="owl_slider_img">
+                    <img src="{{url($slideritem->image)}}" alt="{{ $slideritem->slider_name }}" class="owl_slider_img">
                 </div>
-                <div class="item owl_slider_items">
+                @empty
+                    <div class="item owl_slider_items">
+                        No Data Found
+                    </div>
+                @endforelse
+               
+                {{-- <div class="item owl_slider_items">
                     <img src="{{url('public/home/images/banner-2.png')}}" alt="" class="owl_slider_img">
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -26,8 +34,12 @@
     </div>
     <div class="section_content">
         <div class="row">
+            @forelse($movie as $data)
+            <?php $data = obj($data); ?>
             <div class="section_content_img col-md-4">
-                <img src="{{url('public/home/images/image 1.png')}}" alt="" class="img-fluid">
+                @if(!$data->image==NULL)
+                <img src="{{url($data->image)}}" alt="{{$data->movie_name}}" class="img-fluid">
+                @endif
                 <div class="overlay">
                     <div class="meta-data">
                         <div class="row">
@@ -65,8 +77,13 @@
                    </div><!--meta data end-->
                </div> <!--overlay end-->
           </div> <!--section content img  end-->
+          @empty
+          <div class="col-md-4">
+            No data found
+          </div>
+          @endforelse
 
-          <div class="section_content_img col-md-4">
+          {{-- <div class="section_content_img col-md-4">
             <img src="{{url('public/home/images/image 1.png')}}" alt="" class="img-fluid">
             <div class="overlay">
                 <div class="meta-data">
@@ -144,7 +161,7 @@
                 </div>
            </div><!--meta data end-->
        </div> <!--overlay end-->
-  </div> <!--section content img  end-->
+  </div> <!--section content img  end--> --}}
   
         </div><!--row end-->
     </div><!--section content end-->
@@ -319,7 +336,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
     Swal.fire({
         // title: 'Sweet!',
         imageUrl: 'https://unsplash.it/400/200',
@@ -337,5 +354,5 @@
         '<i class="fa fa-thumbs-down"></i>',
     cancelButtonAriaLabel: 'Thumbs down'
     })
-</script>
+</script> --}}
 @endpush

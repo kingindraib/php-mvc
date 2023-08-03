@@ -11,6 +11,7 @@ class LoginController extends Controller
 {
     public function index(RouteCollection $routes)
     {
+       
         return view('auth.login');
     }
 
@@ -22,7 +23,6 @@ class LoginController extends Controller
             $validationRules = [
                 'password' => 'required',
                 'email' => 'email|required',
-                'name' => 'required',
             ];
             
            $res = Validation::make($credentials,$validationRules);
@@ -37,15 +37,23 @@ class LoginController extends Controller
         //    print_r('tets');
         //    print_r($password);
         //    die();
-           $auth = User::login(the_post());
+        // 25d55ad283aa400af464c76d713c07ad 
+        // 25d55ad283aa400af464c76d713c07ad
+        // 25d55ad283aa400af464c76d713c07ad
+        $data = the_post();
+        $data['password'] = md5(the_post('password'));
+        // print_r($data);
+        // die();
+           $auth = User::login($data);
         //    print_r($auth);
+        //    die();
            if($auth['success'] == true){
-            echo "done";
-            // return redirect();
-            // return view('admin.index');
+            // echo true;
+            return route('admin/dashboard');
            }else{
             // print_r($auth);
-            return back('errors_message',$auth);
+            // echo "false";
+            return back('errors_message','username or password inviled');
            }
         }
    }
@@ -63,11 +71,25 @@ class LoginController extends Controller
             $validationRules = [
                 'password' => 'required',
                 'email' => 'email|required',
+                'confirm_password'=> 'required|confirm_password:password', 
             ];
             $res = Validation::make($credentials,$validationRules);
             if(!empty($res)){
                 Validation::setold(the_post());
                 return back('errors',$res);
+            }
+            $data = the_post();
+            $data['password'] = md5(the_post('password'));
+            // print_r(the_post());
+            // echo "<pre>";
+            $insert = User::create($data);
+            // print_r($insert);
+            if($insert){
+                set_message('success_message','registration success success');
+              return route('login');
+            }else{
+                Validation::setold(the_post());
+                return back('success_message','data inserted failled');
             }
         }
    }

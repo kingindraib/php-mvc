@@ -1,1 +1,0 @@
-<h1>this is header</h1><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/home/test.blade.php ENDPATH**/ ?>

@@ -12,7 +12,8 @@
          "files": [
               "app/provider/ViewProvider.php",
               "app/provider/helper.php",
-              "app/components/form.php"
+              "app/components/form.php",
+              "app/Helper/helper.php"
             ]
     },
     "require": {
