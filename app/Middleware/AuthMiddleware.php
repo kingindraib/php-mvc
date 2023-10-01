@@ -1,16 +1,20 @@
 <?php
 namespace App\Middleware;
+use Symfony\Component\HttpFoundation\Request;
+// session_start();
+// error_reporting(0);
 
 class AuthMiddleware implements Middleware{
-    public function handle(Request $request, Response $response, callable $next) {
-        // Check if the user is authenticated
-        if($request->getSession()->get('user') === null) {
-          // Redirect to the login page
-          $response->redirect('/login');
-          return;
+    public static function Auth() {
+        // 
+        // session_data
+        if(!empty($_SESSION)){
+          if(!isset($_SESSION['session_data'])){
+            return redirect('/movie/login');
+          }
+        }else{
+            return redirect('/movie/login');
         }
-    
-        // Call the next middleware in the stack
-        $next($request, $response);
+        
       }
 }

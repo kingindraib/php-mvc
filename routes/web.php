@@ -79,6 +79,7 @@ $routes->add($movieroute.'assign',new Route($movieurl.'assign/{id}',['controller
 $routes->add($movieroute.'assign.display',new Route($movieurl.'assign/display/{id}',['controller'=>$moviecontroller.'assign_display']));
 $routes->add($movieroute.'assign.get_show',new Route($movieurl.'assign/get_show/{id}',['controller'=>$moviecontroller.'get_show']));
 $routes->add($movieroute.'assign.store.data',new Route($movieurl.'assign/store/',['controller'=>$moviecontroller.'assign_store']));
+// $routes->add($movieroute.'assign.update.data',new Route($movieurl.'assign/update/{id}',['controller'=>$moviecontroller.'assign_update']));
 
 
 
@@ -281,3 +282,77 @@ $routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$
 $routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
 $routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
 $routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
+
+
+
+
+/*
+*********************************************************
+*********************************************************
+                PROFILEMANAGEMENT ROUTE
+*********************************************************
+*********************************************************
+*/
+$staticurl ='/movie/admin/dashboard/profile/';
+$staticroute = 'admin.profile.';
+$staticcontroller = 'admin\ProfileController@';
+$routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
+$routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
+$routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));
+$routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
+$routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
+$routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
+$routes->add($staticroute.'change_password', new Route($staticurl.'change_password',['controller'=>$staticcontroller.'change_password']));
+$routes->add($staticroute.'update_password', new Route($staticurl.'update_password',['controller'=>$staticcontroller.'update_password']));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+*/
+
+
+
+
+/*
+*********************************************************
+*********************************************************
+                HOME PART ROUTE
+*********************************************************
+*********************************************************
+*/
+
+/*
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+*/
+
+$routes->add('home.single', new Route('/movie/single/{id}', ['controller' => 'home\SingleController@index']));
+$routes->add('home.single.seat', new Route('/movie/single/seat/{id}', ['controller' => 'home\SingleController@seat']));

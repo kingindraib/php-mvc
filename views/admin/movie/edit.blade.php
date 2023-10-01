@@ -161,6 +161,9 @@ use App\Components\Form;
 					{{Form::formgroup('Release Date','date','release_date','','',$data->release_date)}}
 					</div>
 					<div class="col-md-6">
+						{{Form::formgroup('Movie Type','text','movie_type','','',$data->movie_type)}}
+					</div>
+					<div class="col-md-6">
 						{{Form::formgroup('Duretion','text','duretion','','',$data->duretion)}}
 					</div>
 				   <div class="col-md-6">
@@ -182,7 +185,13 @@ use App\Components\Form;
 					<div class="form-group">
 						<label for="">Threator</label>
 						<select name="threator_id[]" id="movie_threator" class="select2 form-control" multiple="multiple" required>
-							<option value="{{ $movietherator->movie_id }}" selected>{{ threator_name($movietherator->threator_id)->threator_name }}</option>
+							@if($movietherator == NULL)
+							<option value="{{ $movietherator->movie_id }}" selected>{{ threator_name($movietherator->threator_id)->threator_name ?? 'N/A' }}</option>
+							@else
+								@foreach(threator() as $threator)
+								<option value="{{ $threator['id'] }}">{{ $threator['threator_name'] }}</option>
+								@endforeach
+							@endif
 							{{-- @foreach(threator() as $threator)
 							<option value="{{ $threator['id'] }}">{{ $threator['threator_name'] }}</option>
 							@endforeach --}}

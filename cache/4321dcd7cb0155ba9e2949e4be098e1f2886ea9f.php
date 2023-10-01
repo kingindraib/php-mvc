@@ -13,8 +13,8 @@
 			</div>
 			<div class="profile">
 				<div class="info">
-					<p>Hey, <b>Indra</b></p>
-					<small class="text-muted">Admin</small>
+					<p>Hey, <b><?php echo e(auth()->first_name); ?></b></p>
+					<small class="text-muted"><?php echo e(auth()->last_name); ?></small>
 				</div>
 				<div class="profile-photo">
 					<img src="<?php echo e(url('public/admin/images/profile-1.jpg')); ?>">

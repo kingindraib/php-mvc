@@ -78,6 +78,9 @@ use App\Components\Form;
 					{{Form::formgroup('Release Date','date','release_date','','',old('release_date'))}}
 					</div>
 					<div class="col-md-6">
+						{{Form::formgroup('Movie Type','text','movie_type','','',old('movie_type'))}}
+					</div>
+					<div class="col-md-6">
 						{{Form::formgroup('Duretion','text','duretion','','',old('duretion'))}}
 					</div>
 				   <div class="col-md-6">

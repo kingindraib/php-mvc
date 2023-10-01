@@ -36,7 +36,7 @@ class SeatRowController extends Controller
             // dd($data);
             // $data['threator_code'] = time();
             SeatRow::create($data);
-            set_message('success_message','Threator Created Success');
+            set_message('success_message','seat row Created Success');
             return route('admin/dashboard/movie/settngs/seatrow/index');
         }else{
             return back('error_message','Method Not Supported, Support Method Post');
@@ -70,7 +70,7 @@ class SeatRowController extends Controller
             }
             $data = the_post();
             SeatRow::update($id,$data);
-            set_message('success_message','Threator Updated Success');
+            set_message('success_message','seat row Updated Success');
             return route('admin/dashboard/movie/settngs/seatrow/index');
         }else{
             return back('error_message','Method Not Supported, Support Method Post');

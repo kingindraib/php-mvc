@@ -53,7 +53,7 @@ $i = 1;
                             </td>    
                             <td>
                                 <a href="{{url('admin/dashboard/movie/settngs/show/edit/'.$data->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="{{url('aadmin/dashboard/movie/settngs/show/delete/'.$data->id)}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>
+                                <a href="{{url('admin/dashboard/movie/settngs/show/delete/'.$data->id)}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>
                             </td> 
                         </tr>
                         @empty 

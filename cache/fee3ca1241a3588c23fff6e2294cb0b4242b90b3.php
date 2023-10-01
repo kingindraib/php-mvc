@@ -56,7 +56,7 @@ use App\Components\Form;
                     <?php $thdetail = obj($thdetail); ?>
                     <tr>
                         <td><?php echo e($i++); ?></td>
-                        <td><?php echo e(threator_name($thdetail->threator_id)->threator_name); ?></td>
+                        <td><?php echo e(threator_name($thdetail->threator_id)->threator_name ?? 'N/A'); ?></td>
                         <td>
                             <ul>
                                 <?php $__currentLoopData = movie_screen($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movieScreen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -72,8 +72,8 @@ use App\Components\Form;
                             </ul>
                         </td>
                         <td>
-                            <a href="<?php echo e(url('admin/dashboard/movie/movietheator/edit/'.$data->id)); ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="<?php echo e(url('admin/dashboard/movie/movietheator/delete/'.$data->id)); ?>" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>    
+                            <a href="<?php echo e(url('admin/dashboard/movie/movietheator/edit/'.$thdetail->id)); ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="<?php echo e(url('admin/dashboard/movie/movietheator/delete/'.$thdetail->id)); ?>" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>    
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

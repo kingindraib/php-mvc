@@ -71,7 +71,7 @@ class LoginController extends Controller
             $validationRules = [
                 'password' => 'required',
                 'email' => 'email|required',
-                'confirm_password'=> 'required|confirm_password:password', 
+                'confirm_password'=> 'required|same:password', 
             ];
             $res = Validation::make($credentials,$validationRules);
             if(!empty($res)){

@@ -4,6 +4,7 @@
 @section('body')
 @php
 use App\Components\Form;
+// dd("true");
 @endphp
 
 <div class="container-md">
@@ -11,7 +12,7 @@ use App\Components\Form;
         <div class="col-md-8 m-auto">
             {{-- <h1 class="text-center my-2"></h1> --}}
 			@include('message.message')
-			<form action="{{url('admin/dashboard/movie/assign/update/'.$movie_id)}}" method="POST">
+			<form action="{{url('admin/dashboard/movie/movietheator/update/'.$movie_id)}}" method="POST">
                 <input type="hidden" name="movie_id" id="" value="{{$movie_id}}">
 				<div class="row">
                     <div class="col-md-8">
@@ -68,9 +69,10 @@ use App\Components\Form;
                 success: function(show){
                     // console.log(show);
                     var showJson = JSON.parse(show);
+                    $('#movie_show').empty();
                     $.each(showJson, function(index,value){
                         console.log(value.id);
-                        $('#movie_show').empty();
+                       
                         $('#movie_show').append('<option value="'+value.id+'">'+value.show_name+'</option>');
                     });
                 },

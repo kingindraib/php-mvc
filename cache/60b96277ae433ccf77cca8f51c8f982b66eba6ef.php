@@ -42,25 +42,45 @@
                     <div class="meta-data">
                         <div class="row">
                             <div class="col-md-5 movie_meta_1">
-                                <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="overlay-img">
+                                
+                                <?php if(!$data->image==NULL): ?>
+                                <img src="<?php echo e(url($data->image)); ?>" alt="<?php echo e($data->movie_name); ?>" class="overlay-img">
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6 movie_meta_2">
-                                <h1 class="movie_title"><span>Title : </span> Jaari</h1>
-                                <p><span>Type :</span> Drama</p>
-                                <p class="movie_short">In publishing and graphic design, Lorem ipsum is a placeholder
-                                   text commonly used to demonstrate the visual form of a document or 
-                                   a typeface without relying on meaningful 
-                                   content. </p>
+                                <h1 class="movie_title"><span>Title : </span> <?php echo e($data->movie_name); ?></h1>
+                                <p><span>Type :</span> <?php echo e($data->movie_type); ?></p>
+                                <p><span>Release Date :</span> <?php echo e($data->release_date); ?></p>
+                            
+                                <p><span>Director :</span>
+                                    <?php $__currentLoopData = movie_director($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $director): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $director = obj($director); ?>
+                                     <?php echo e($director->director_name); ?> ,&nbsp;
+                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </p>
+                                <p><span>Cast :</span> 
+                                    <?php $__currentLoopData = movie_cast($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie_cast): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php echo e(obj($movie_cast)->cast_name); ?> ,&nbsp;
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </p>
+                                <p><span>Producer :</span> 
+                                <?php $__currentLoopData = movie_producer($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prodecure): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php echo e(obj($prodecure)->producers_name); ?> ,&nbsp;
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </p>
+                                <p><span>Distributor :</span><?php echo e(movie_distributor($data->distributor_code)->distributor_name); ?></p>
+                                <p><span>Production :</span> <?php echo e($data->production_house); ?></p>
+                               
                             </div>
                             <div class="col-md-5 movie_meta_1">
-                                <button class="btn btn-success btn-sm btn-custom"><i class="fa fa-money"></i> Buy Now</button>
-                                <button class="btn btn-danger btn-sm btn-custom watchtailler"></span> <i class="fa fa-play"></i> Watch Taillor</button>
+                                
+                                <a href="<?php echo e(url('single/'.$data->id)); ?>" class="btn btn-success btn-sm btn-custom"><i class="fa fa-money"></i> Buy Now</a>
+                                <button class="btn btn-danger btn-sm btn-custom watchtailler" value="<?php echo e($data->tailler); ?>"></span> <i class="fa fa-play"></i> Watch Taillor</button>
                             </div>
                             <div class="col-md-6 movie_meta_2">
-                                <div class="mt-3"></div>
-                                <p><span>Director :</span> Drama</p>
-                                <p><span>Release on :</span> Drama</p>
-                                <p><span>Release on :test</p>
+                                
+                                <p class="movie_short"><?php echo e(str_limit($data->description,20 )); ?></p>
+                                
                             </div>
                             <div class="col-md-6 movie_meta_2 mt-4">
                                 <h1>Available Show</h1>
@@ -109,31 +129,59 @@
     </div>
     <div class="section_content">
         <div class="row">
+            <?php
+            // dd(coming_soon_movie());
+                // coming_soon_movie();
+                ?>
+            <?php $__empty_1 = true; $__currentLoopData = coming_soon_movie(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <?php $data = obj($data); ?>
             <div class="section_content_img col-md-4">
-                <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="img-fluid">
+                <?php if(!$data->image==NULL): ?>
+                <img src="<?php echo e(url($data->image)); ?>" alt="<?php echo e($data->movie_name); ?>" class="img-fluid">
+                <?php endif; ?>
                 <div class="overlay">
                     <div class="meta-data">
                         <div class="row">
                             <div class="col-md-5 movie_meta_1">
-                                <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="overlay-img">
+                                
+                                <?php if(!$data->image==NULL): ?>
+                                <img src="<?php echo e(url($data->image)); ?>" alt="<?php echo e($data->movie_name); ?>" class="overlay-img">
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6 movie_meta_2">
-                                <h1 class="movie_title"><span>Title : </span> Jaari</h1>
-                                <p><span>Type :</span> Drama</p>
-                                <p class="movie_short">In publishing and graphic design, Lorem ipsum is a placeholder
-                                   text commonly used to demonstrate the visual form of a document or 
-                                   a typeface without relying on meaningful 
-                                   content. </p>
+                                <h1 class="movie_title"><span>Title : </span> <?php echo e($data->movie_name); ?></h1>
+                                <p><span>Type :</span> <?php echo e($data->movie_type); ?></p>
+                                <p><span>Release Date :</span> <?php echo e($data->release_date); ?></p>
+                            
+                                <p><span>Director :</span>
+                                    <?php $__currentLoopData = movie_director($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $director): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $director = obj($director); ?>
+                                     <?php echo e($director->director_name); ?> ,&nbsp;
+                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </p>
+                                <p><span>Cast :</span> 
+                                    <?php $__currentLoopData = movie_cast($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie_cast): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php echo e(obj($movie_cast)->cast_name); ?> ,&nbsp;
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </p>
+                                <p><span>Producer :</span> 
+                                <?php $__currentLoopData = movie_producer($data->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prodecure): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php echo e(obj($prodecure)->producers_name); ?> ,&nbsp;
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </p>
+                                <p><span>Distributor :</span><?php echo e(movie_distributor($data->distributor_code)->distributor_name); ?></p>
+                                <p><span>Production :</span> <?php echo e($data->production_house); ?></p>
+                               
                             </div>
                             <div class="col-md-5 movie_meta_1">
-                                <button class="btn btn-success btn-sm btn-custom"><i class="fa fa-money"></i> Buy Now</button>
-                                <button class="btn btn-danger btn-sm btn-custom"></span> <i class="fa fa-play"></i> Watch Taillor</button>
+                                
+                                <a href="<?php echo e(url('single/'.$data->id)); ?>" class="btn btn-success btn-sm btn-custom"><i class="fa fa-money"></i> Buy Now</a>
+                                <button class="btn btn-danger btn-sm btn-custom watchtailler" value="<?php echo e($data->tailler); ?>"></span> <i class="fa fa-play"></i> Watch Taillor</button>
                             </div>
                             <div class="col-md-6 movie_meta_2">
-                                <div class="mt-3"></div>
-                                <p><span>Director :</span> Drama</p>
-                                <p><span>Release on :</span> Drama</p>
-                                <p><span>Release on :test</p>
+                                
+                                <p class="movie_short"><?php echo e(str_limit($data->description,20 )); ?></p>
+                                
                             </div>
                             <div class="col-md-6 movie_meta_2 mt-4">
                                 <h1>Available Show</h1>
@@ -148,86 +196,14 @@
                    </div><!--meta data end-->
                </div> <!--overlay end-->
           </div> <!--section content img  end-->
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+          <div class="col-md-4">
+            No data found
+          </div>
+          <?php endif; ?>
 
-          <div class="section_content_img col-md-4">
-            <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="img-fluid">
-            <div class="overlay">
-                <div class="meta-data">
-                    <div class="row">
-                        <div class="col-md-5 movie_meta_1">
-                            <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="overlay-img">
-                        </div>
-                        <div class="col-md-6 movie_meta_2">
-                            <h1 class="movie_title"><span>Title : </span> Jaari</h1>
-                            <p><span>Type :</span> Drama</p>
-                            <p class="movie_short">In publishing and graphic design, Lorem ipsum is a placeholder
-                               text commonly used to demonstrate the visual form of a document or 
-                               a typeface without relying on meaningful 
-                               content. </p>
-                        </div>
-                        <div class="col-md-5 movie_meta_1">
-                            <button class="btn btn-success btn-sm btn-custom"><i class="fa fa-money"></i> Buy Now</button>
-                            <button class="btn btn-danger btn-sm btn-custom"></span> <i class="fa fa-play"></i> Watch Taillor</button>
-                        </div>
-                        <div class="col-md-6 movie_meta_2">
-                            <div class="mt-3"></div>
-                            <p><span>Director :</span> Drama</p>
-                            <p><span>Release on :</span> Drama</p>
-                            <p><span>Release on :test</p>
-                        </div>
-                        <div class="col-md-6 movie_meta_2 mt-4">
-                            <h1>Available Show</h1>
-                        </div>
-                        <div class="col-md-12">
-                            <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                            <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                            <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                            <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                        </div>
-                    </div>
-               </div><!--meta data end-->
-           </div> <!--overlay end-->
-      </div> <!--section content img  end-->
 
-      <div class="section_content_img col-md-4">
-        <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="img-fluid">
-        <div class="overlay">
-            <div class="meta-data">
-                <div class="row">
-                    <div class="col-md-5 movie_meta_1">
-                        <img src="<?php echo e(url('public/home/images/image 1.png')); ?>" alt="" class="overlay-img">
-                    </div>
-                    <div class="col-md-6 movie_meta_2">
-                        <h1 class="movie_title"><span>Title : </span> Jaari</h1>
-                        <p><span>Type :</span> Drama</p>
-                        <p class="movie_short">In publishing and graphic design, Lorem ipsum is a placeholder
-                           text commonly used to demonstrate the visual form of a document or 
-                           a typeface without relying on meaningful 
-                           content. </p>
-                    </div>
-                    <div class="col-md-5 movie_meta_1">
-                        <button class="btn btn-success btn-sm btn-custom"><i class="fa fa-money"></i> Buy Now</button>
-                        <button class="btn btn-danger btn-sm btn-custom"></span> <i class="fa fa-play"></i> Watch Taillor</button>
-                    </div>
-                    <div class="col-md-6 movie_meta_2">
-                        <div class="mt-3"></div>
-                        <p><span>Director :</span> Drama</p>
-                        <p><span>Release on :</span> Drama</p>
-                        <p><span>Release on :test</p>
-                    </div>
-                    <div class="col-md-6 movie_meta_2 mt-4">
-                        <h1>Available Show</h1>
-                    </div>
-                    <div class="col-md-12">
-                        <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                        <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                        <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                        <button class="btn btn-outline-danger mx-2" type="button">7 AM</button>
-                    </div>
-                </div>
-           </div><!--meta data end-->
-       </div> <!--overlay end-->
-  </div> <!--section content img  end-->
+         
   
         </div><!--row end-->
     </div><!--section content end-->
@@ -238,9 +214,11 @@
 <script>
     $(document).ready(function(){
         $('.watchtailler').on('click',function(){
+            var tailler = $(this).val();
+            console.log(tailler);
             Swal.fire({
             title: 'Jaari',
-            html: '<iframe width="560" height="315" src="https://www.youtube.com/embed/4sx0nvVDYA8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            html: '<iframe width="560" height="315" src="'+tailler+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
             showCloseButton: true,
             showCancelButton: true,
             focusConfirm: false,
@@ -254,6 +232,7 @@
             })
         });
     });
+
 </script>
 
 

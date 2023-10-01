@@ -31,7 +31,7 @@ class Validation{
                                 $errors[$credential] = ucfirst($credential) . ' must be a valid email address.';
                             }
                             break;
-                        case 'confirm_password': // New confirmation rule
+                        case 'same': // New confirmation rule
                             $passwordField = $ruleParams[0] ?? 'password';
                             $passwordValue = $credentials[$passwordField] ?? '';
                             if ($value !== $passwordValue) {

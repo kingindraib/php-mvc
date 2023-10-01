@@ -36,7 +36,7 @@ class SeatColumnController extends Controller
             // dd($data);
             // $data['threator_code'] = time();
             SeatColumn::create($data);
-            set_message('success_message','Threator Created Success');
+            set_message('success_message','Seat Column Created Success');
             return route('admin/dashboard/movie/settngs/seatcolumn/index');
         }else{
             return back('error_message','Method Not Supported, Support Method Post');
@@ -70,7 +70,7 @@ class SeatColumnController extends Controller
             }
             $data = the_post();
             SeatColumn::update($id,$data);
-            set_message('success_message','Threator Updated Success');
+            set_message('success_message','seat column Updated Success');
             return route('admin/dashboard/movie/settngs/seatcolumns/index');
         }else{
             return back('error_message','Method Not Supported, Support Method Post');

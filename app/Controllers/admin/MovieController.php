@@ -186,6 +186,7 @@ class MovieController extends Controller
         $prodecure = Producer::where('movie_id','=',$id)->get();
         $director= Director::where('movie_id','=',$id)->get();
         $movietherator = MovieThreator::where('movie_id','=',$id)->first();
+        // dd($movietherator);
         $data = [
                 'data'=> $data,
                 'cast' => $cast,
@@ -238,7 +239,7 @@ class MovieController extends Controller
             Movie::update($id,$data);
             $movie = $id;
             if(isset($data['cast_name'])){
-                Cast::where('movie_id','=',$movie)->delete($movie);
+                Cast::where('movie_id','=',$movie)->delete();
                 foreach($data['cast_name'] as $casts){
                     $cast['cast_name'] = $casts;
                     $cast['movie_id'] = $movie;
@@ -247,7 +248,7 @@ class MovieController extends Controller
                 }
             }
             if(isset($data['director_name'])){
-                Director::where('movie_id','=',$movie)->delete($movie);
+                Director::where('movie_id','=',$movie)->delete();
                 foreach($data['director_name'] as $direct){
                     $director['director_name'] = $direct;
                     $director['movie_id'] = $movie;
@@ -256,7 +257,7 @@ class MovieController extends Controller
                 }
             }
             if(isset($data['producers_name'])){
-                Producer::where('movie_id','=',$movie)->delete($movie);
+                Producer::where('movie_id','=',$movie)->delete();
                 foreach($data['producers_name'] as $prod){
                     $prodecure['producers_name'] = $prod;
                     $prodecure['movie_id'] = $movie;

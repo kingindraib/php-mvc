@@ -4,6 +4,7 @@
 @php
 use App\Components\Form;
 @endphp
+
 @section('body')
 <div class="container-md">
     <div class="row">
@@ -33,7 +34,7 @@ use App\Components\Form;
                         {{validation_message('errors','screen_code')}}
                         <label for="">Screen Name</label>
                        <select name="screen_code" id="" class="form-control mb-3">
-                        <option value="{{ $data->screen_code }}">{{ screen_name($data->screen_code)->screen_name  }}</option>
+                        <option value="{{ $data->screen_code }}">{{ screen_code($data->screen_code)->screen_name  }}</option>
                         @foreach(screen() as $screen)
                         <option value="{{$screen['screen_code']}}">{{ $screen['screen_name'] }}</option>
                         @endforeach

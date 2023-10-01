@@ -2,9 +2,10 @@
 
 use Jenssegers\Blade\Blade;
 use Symfony\Component\Dotenv\Dotenv;
+use App\Models\User;
 $dotenv = new Dotenv();
 $dotenv->load('../.env');
-session_start();
+// session_start();
 function url($path){
     $return_path = HOST .''.APP_NAME.'/'.$path;
     return $return_path;
@@ -36,7 +37,7 @@ if(!function_exists('the_post')){
 // redirect back funtion
 if (!function_exists("back")) {
     function back($args,$data=''){
-        session_start();
+        // session_start();
         $_SESSION[$args] = $data;
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit();
@@ -181,4 +182,41 @@ function Slug($string) {
 
 function obj($array){
     return (object)$array;
+}
+
+if(!function_exists('str_limit')){
+    function str_limit($string,$limit){
+        $words = str_word_count($string, 1);
+        $maxWords = $limit;
+        if (count($words) > $maxWords) {
+            $trimmedString = implode(' ', array_slice($words, 0, $maxWords));
+            $trimmedString .= '...';
+    
+            return $trimmedString;
+        }
+    }
+}
+
+
+if(!function_exists('redirect')){
+    function redirect($args){
+        dd(true);
+        $location_redirect  = url($args);
+        dd($location_redirect);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit();
+    }
+}
+
+if(!function_exists('auth')){
+    function auth(){
+        if(!empty($_SESSION)){
+            if(isset($_SESSION['session_data'])){
+                $data = $_SESSION['session_data'];
+                $data = obj($data);
+                $user = User::findorFail($data->id);
+              return $user;
+            }
+          }
+    }
 }

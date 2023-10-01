@@ -47,9 +47,9 @@
         <span class="material-symbols-sharp">assignment</span>
         <h3>FAQs</h3>
     </a>
-    <a href="#">
+    <a href="<?php echo e(url('admin/dashboard/profile/index')); ?>">
         <span class="material-symbols-sharp">trending_up</span>
-        <h3>Analytics</h3>
+        <h3>Profile Settings</h3>
     </a>
     <a href="<?php echo e(url('admin/dashboard/movie/settings/index')); ?>">
         <span class="material-symbols-sharp">settings</span>

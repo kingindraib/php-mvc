@@ -4,6 +4,7 @@
 <?php $__env->startSection('body'); ?>
 <?php
 use App\Components\Form;
+// dd("true");
 ?>
 
 <div class="container-md">
@@ -11,7 +12,7 @@ use App\Components\Form;
         <div class="col-md-8 m-auto">
             
 			<?php echo $__env->make('message.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-			<form action="<?php echo e(url('admin/dashboard/movie/assign/update/'.$movie_id)); ?>" method="POST">
+			<form action="<?php echo e(url('admin/dashboard/movie/movietheator/update/'.$movie_id)); ?>" method="POST">
                 <input type="hidden" name="movie_id" id="" value="<?php echo e($movie_id); ?>">
 				<div class="row">
                     <div class="col-md-8">
@@ -70,9 +71,10 @@ use App\Components\Form;
                 success: function(show){
                     // console.log(show);
                     var showJson = JSON.parse(show);
+                    $('#movie_show').empty();
                     $.each(showJson, function(index,value){
                         console.log(value.id);
-                        $('#movie_show').empty();
+                       
                         $('#movie_show').append('<option value="'+value.id+'">'+value.show_name+'</option>');
                     });
                 },

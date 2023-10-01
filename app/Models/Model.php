@@ -11,39 +11,47 @@ class Model extends DatabaseProvider{
     protected static $requestTable = '';
     protected static $requestColumns = [];
     protected static $orderBy = [];
+    protected static $groupBy;
+    protected static $selectColumns;
 
         /**
      * different condition data
      */
 
      public static function where($column, $operator, $value) {
-        // static::$conditions[] = "$column $operator :$column";
-        // return new static();
-        // return $this;
-        // dd($column);
+ 
         $table =static::$table;
-        // dd($table);
-        // dd($operator);
         static::$requestColumns[] = $column;
         static::$requestTable = $table;
         static::$conditions[] = "$column $operator :$column";
         static::$bindings[":$column"] = $value;
         return new static();
-        // dd( static::$conditions);
-        // dd(new static());
-        // return $conditions;
     }
     public static function orderBy($column, $direction = 'ASC') {
         $table =static::$table;
-        // dd($table);
-       
-        // dd(static::$requestTable);
-            static::$orderBy[] = "ORDER BY $column $direction";
-            static::$requestTable = $table;
-            // dd(static::$orderBy);
+
+        static::$orderBy[] = "ORDER BY $column $direction";
+        static::$requestTable = $table;
         return new static();
         // return static::$orderBy;
     }
+
+    public static function groupBy($key,$column){
+        $table = static::$table;
+        // SELECT row_id FROM seats GROUP BY row_id;
+        // static::$groupBy = "SELECT $column FROM $table GROUP BY $key";
+        // dd(static::$conditions);
+            // $query = "SELECT $column FROM $table GROUP BY $key";
+            $query = array('key'=>$key,'column'=>$column);
+         static::$groupBy = $query;
+        // static::$selectColumns = implode(', ', $column);
+         // SELECT row_id FROM seats GROUP BY row_id;
+        // static::$selectColumns = $column;
+        // dd(static::$selectColumns);
+        return new static();
+
+    }
+
 
     public static function create(array $data){
         $databaseProvider = new DatabaseProvider();
@@ -112,7 +120,7 @@ class Model extends DatabaseProvider{
         return $stmt->rowCount();
     }
 
-    public static function delete($id){
+    public static function delete($id=''){
         $databaseProvider = new DatabaseProvider();
         $db = $databaseProvider->getDB();
         $table =static::$table;
@@ -135,14 +143,17 @@ class Model extends DatabaseProvider{
            
         }
         
-        $sqlcount = "SELECT COUNT(*) as count FROM {$table} WHERE id = :id ";
+        // $sqlcount = "SELECT COUNT(*) as count FROM {$table} WHERE id = :id ";
+        $sqlcount = "SELECT COUNT(*) as count FROM {$table} ";
         $countstmt = $db->prepare($sqlcount);
-        $countstmt->bindParam(':id', $id);
+        // $countstmt->bindParam(':id', $id);
         $countstmt->execute();
         $result = (object) $countstmt->fetch(PDO::FETCH_ASSOC);
         // dd($result->count);
+       
         if($result->count>0) {
-            // dd(true);
+            // dd("true");
+            // dd($sql);
             $stmt = $db->prepare($sql);
             if(!empty(static::$conditions) && static::$requestTable == $table){
                 $field = static::$fillable;
@@ -209,7 +220,7 @@ class Model extends DatabaseProvider{
     public static function first(){
         $databaseProvider = new DatabaseProvider();
         $db = $databaseProvider->getDB();
-        $table =static::$table;
+        $table = static::$table;
         $sql = "SELECT * FROM {$table}";
         if (!empty(static::$conditions) && static::$requestTable == $table) {
             $field = static::$fillable;
@@ -254,75 +265,67 @@ class Model extends DatabaseProvider{
         $obj = $stmt->fetch(PDO::FETCH_ASSOC);
         return (object)$obj;
     }
+
+
     public static function get(){
         $databaseProvider = new DatabaseProvider();
         $db = $databaseProvider->getDB();
-        $table =static::$table;
-        // print_r($db);
-        // die();
-        // dd($table);
-        // dd(static::$requestTable);
-        // dd(static::$requestColumns);
-    
-        // dd($columns);
-     
+        $table =static::$table;   
+        $groupBy = static::$selectColumns;
         $sql = "SELECT * FROM {$table}";
-        // dd(true);
+        // if(isset(static::$groupBy)){
+        if(!empty(static::$groupBy)){
+        //    $sql = static::$groupBy;
+        $column = static::$groupBy['column'];
+        $key = static::$groupBy['key'];
+        $sql = "SELECT {$column} FROM $table GROUP BY {$key}";
+        }
+    //    dd(static::$groupBy);
+    //    "SELECT $column FROM $table GROUP BY $key";
+        // dd($sql);
+        // print_r(static::$groupBy);
+          // SELECT row_id FROM seats GROUP BY row_id;
+        //   print_r(static::$selectColumns);
+        // print_r(static::$requestTable);
+        //   die();
+   
+       
+        // dd(static::$fillable);
+
         if (!empty(static::$conditions) && static::$requestTable == $table) {
             $field = static::$fillable;
-            // dd($field);
             $reqcondition = static::$conditions;
-            // dd($reqcondition);
             $columns = array_map(function ($item) {
                 return strtok($item, ' =');
             }, $reqcondition);
             $conditions = array_intersect($field,$columns);
-            // dd($conditions);
             $acceptcondition = array_map(function ($column) {
                 return "$column = :$column";
             }, $conditions);
-            //    dd($acceptcondition);
-            // dd("hello");
-            // dd(static::$conditions);
-            // $sql .= " WHERE " . implode(' AND ', self::$conditions);
             $sql .= " WHERE " . implode(' AND ', $acceptcondition);
+
+            if(!empty(static::$groupBy)){
+                $column = static::$groupBy['column'];
+                $key = static::$groupBy['key'];
+                // $sql = "SELECT {$column} FROM $table " WHERE " . implode(' AND ', $acceptcondition) GROUP BY {$key}";
+                $sql = "SELECT {$column} FROM {$table} WHERE " . implode(' AND ', $acceptcondition) . " GROUP BY {$key}";
+            }
         }
         if(!empty(static::$orderBy) && static::$requestTable == $table){
             $sql .=  ' '.implode( static::$orderBy);
-            // dd($sql);
-            // dd(static::$requestTable);
-            // dd(static::$orderBy);
         }
-        
-        // die();
-        // dd(static::$orderBy);
         // dd($sql);
-        // $sql .= " self::orderBy()";
-        // dd($sql);
-        
-        // $db = parent::$db;
-        // $sql = "SELECT * FROM {$table}";
-
-
-        // dd(static::$bindings);
+       
         $stmt = $db->prepare($sql);
+        // dd($stmt);
         if(!empty(static::$conditions) && static::$requestTable == $table){
             $field = static::$fillable;
-            // dd($field);
             $reqcondition = static::$conditions;
             // dd($reqcondition);
             $columns = array_map(function ($item) {
                 return strtok($item, ' =');
             }, $reqcondition);
             $conditions = array_intersect($field,$columns);
-            // dd($conditions);
-            // dd($acceptcondition);
-            // $inputArray = [
-            //     'screen_code = :screen_code',
-            //     'threator_code = :threator_code',
-            //     'tsts = :tsts',
-            // ];
-            // dd($inputArray);
             $bindingarray = array_combine(
                 array_map(function ($column) {
                     return ":$column";
@@ -330,21 +333,30 @@ class Model extends DatabaseProvider{
                 array_keys($conditions)
             );
             $reqbinding = static::$bindings;
+          
             $matchingArray = [];
+            // dd($reqbinding);
             foreach ($bindingarray as $key => $value) {
                 if (array_key_exists($key, $reqbinding)) {
                     $matchingArray[$key] = $reqbinding[$key];
                 }
             }
-        // dd($matchingArray);
+            // dd($matchingArray);
             $stmt->execute($matchingArray);
         }else{
             $stmt->execute();
         }
-        // $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
+
+    public static function count(){
+        $databaseProvider = new DatabaseProvider();
+        $db = $databaseProvider->getDB();
+        $table =static::$table;
+        $sql = "SELECT COUNT(*) as count FROM {$table}";
+    }
+    
 
 
     /**

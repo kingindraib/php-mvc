@@ -70,9 +70,11 @@ use App\Components\Form;
                 success: function(show){
                     // console.log(show);
                     var showJson = JSON.parse(show);
+                    console.log(showJson);
+                    $('#movie_show').empty();
                     $.each(showJson, function(index,value){
                         console.log(value.id);
-                        $('#movie_show').empty();
+                       
                         $('#movie_show').append('<option value="'+value.id+'">'+value.show_name+'</option>');
                     });
                 },

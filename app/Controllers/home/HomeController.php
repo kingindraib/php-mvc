@@ -7,6 +7,10 @@ use App\Models\User;
 use App\Provider\Validation;
 use App\Models\Slider;
 use App\Models\Movie;
+use App\Models\Director;
+use App\Models\Distributor;
+use App\Models\Cast;
+use App\Models\Producer;
 // use App\Provider\DatabaseProvider;
 error_reporting(0);
 
@@ -17,7 +21,7 @@ class HomeController extends Controller
     {
         $slider = Slider::get();
         $movie = Movie::orderBy('id','DESC')->get();
-        // dd($movie);
+
         $data = [
             'slider' => $slider,
             'movie' =>$movie,

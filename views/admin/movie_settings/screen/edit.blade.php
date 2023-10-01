@@ -4,6 +4,7 @@
 @php
 use App\Components\Form;
 // dd(screen_name($data['threator_code'])->screen_name);
+// dd($data);
 @endphp
 @section('body')
 <div class="container-md">
@@ -25,8 +26,9 @@ use App\Components\Form;
                         {{Form::formgroup('Columns','text','seat_columns','','',$data['seat_columns'])}}
                     </div>
                     <div class="col-md-12">
+                        <label for="">Select Threator</label>
                         <select name="threator_code" id="" class="form-control my-2" required>
-                            <option value="{{$data['threator_code']}}">{{ threator_name($data['threator_code'])->threator_name }}</option>
+                            <option value="{{$data['threator_code']}}">{{ threator_code($data['threator_code'])->threator_name }}</option>
                             @foreach (threator() as $item)
                                 <option value="{{ $item['threator_code'] }}">{{ $item['threator_name'] }}</option>
                             @endforeach

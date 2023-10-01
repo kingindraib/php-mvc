@@ -11,7 +11,7 @@ use App\Components\Form;
         <div class="col-md-8 m-auto">
             
 			<?php echo $__env->make('message.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-			<form action="<?php echo e(url('admin/dashboard/movie/store')); ?>" method="POST">
+			<form action="<?php echo e(url('admin/dashboard/movie/store')); ?>" method="POST" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-md-12">
 					<?php echo e(Form::formgroup('Movie Name','text','movie_name','','',old('movie_name'))); ?>
@@ -78,6 +78,10 @@ use App\Components\Form;
 					</div>
 					<div class="col-md-6">
 					<?php echo e(Form::formgroup('Release Date','date','release_date','','',old('release_date'))); ?>
+
+					</div>
+					<div class="col-md-6">
+						<?php echo e(Form::formgroup('Movie Type','text','movie_type','','',old('movie_type'))); ?>
 
 					</div>
 					<div class="col-md-6">

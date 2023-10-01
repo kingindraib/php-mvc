@@ -52,7 +52,7 @@ class SeatController extends Controller
 
     public function edit(int $id, RouteCollection $routes)
     {
-        $seat = Seat::find($id);
+        $seat = Seat::findorFail($id);
         $data = ['data'=>$seat];
         return view('admin.movie_settings.seat.edit',$data);
     }

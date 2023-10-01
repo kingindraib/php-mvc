@@ -54,7 +54,7 @@ use App\Components\Form;
                     <?php $thdetail = obj($thdetail); ?>
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{threator_name($thdetail->threator_id)->threator_name}}</td>
+                        <td>{{threator_name($thdetail->threator_id)->threator_name ?? 'N/A'}}</td>
                         <td>
                             <ul>
                                 @foreach(movie_screen($data->id) as $movieScreen)
@@ -69,8 +69,8 @@ use App\Components\Form;
                             </ul>
                         </td>
                         <td>
-                            <a href="{{url('admin/dashboard/movie/movietheator/edit/'.$data->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="{{url('admin/dashboard/movie/movietheator/delete/'.$data->id)}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>    
+                            <a href="{{url('admin/dashboard/movie/movietheator/edit/'.$thdetail->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="{{url('admin/dashboard/movie/movietheator/delete/'.$thdetail->id)}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>    
                         </td>
                     </tr>
                     @empty

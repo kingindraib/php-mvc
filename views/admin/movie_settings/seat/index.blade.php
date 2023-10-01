@@ -20,21 +20,36 @@ $i = 1;
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th>Seat Row Name</th>
+                            <th>Seat Name</th>
+                            <th>Screen</th>
+                            <th>Row</th>
+                            <th>Column</th>
                             <th>Created At</th>
+                            <th>Status</th>
                             <th>Action</th>
                            
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($seat as $data)
+                        <?php $data = obj($data); ?>
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ obj($data)->seat_name }}</td>
-                            <td>{{ obj($data)->created_at }}</td> 
+                            <td>{{ $data->seat_name }}</td>
+                            <td>{{ screen_name($data->screen_id)->screen_name }}</td>
+                            <td>{{ seat_row($data->row_id)->row_name }}</td>
+                            <td>{{ seat_column($data->column_id)->column_name }}</td>
+                            <td>{{ $data->created_at }}</td> 
                             <td>
-                                <a href="{{url('admin/dashboard/movie/settngs/seat/edit/'.$data['id'])}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="{{url('admin/dashboard/movie/settngs/seat/delete/'.$data['id'])}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>
+                                @if($data->status == 'publish')
+                                <span class="badge badge-danger text-dark">{{$data->status}}</span>
+                                @else 
+                                <span class="badge badge-success text-danger">{{$data->status}}</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{url('admin/dashboard/movie/settngs/seat/edit/'.$data->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{url('admin/dashboard/movie/settngs/seat/delete/'.$data->id)}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>
                             </td> 
                         </tr>
                         @empty 

@@ -10,10 +10,25 @@ use App\Models\MovieThreator;
 use App\Models\MovieScreen;
 use App\Models\MovieShow;
 
+use App\Models\Director;
+use App\Models\Cast;
+use App\Models\Producer;
+use App\Models\Seat;
+use App\Models\Order;
+use Carbon\Carbon;
+use App\Models\Movie;
+
+
+use App\Provider\DatabaseProvider;
 
 if(!function_exists('threator')){
     function threator(){
         return Threator::get();
+    }
+}
+if(!function_exists('threator_code')){
+    function threator_code($code){
+        return Threator::where('threator_code','=',$code)->first();
     }
 }
 
@@ -29,6 +44,14 @@ if(!function_exists('screen')){
         return Screen::get();
     }
 }
+
+
+if(!function_exists('screen_code')){
+    function screen_code($screen_code){
+        return Screen::where('screen_code','=',$screen_code)->first();
+    }
+}
+
 if(!function_exists('screen_name')){
     function screen_name($id){
         return Screen::findorFail($id);
@@ -103,3 +126,121 @@ if(!function_exists('threator_screen')){
     }
 }
 
+// foreach($movie as $mdata){
+//     $mdata['directors'] = "hello";
+//     // dd( $mdata['directors']);
+//     // $mdata['directors'] = Director::where('movie_id',$mdata['id'])->get();
+//     // $mdata['distributor_name'] = Distributor::where('distributor_code',$mdata['distributor_code'])->first()->distributor_name;
+//     // $mdata['casts'] = Cast::where('movie_id',$mdata['id'])->get();
+// }
+// dd($movie);
+
+if(!function_exists('movie_distributor')){
+    function movie_distributor($distributor_code){
+       return Distributor::where('distributor_code','=',$distributor_code)->first();
+    }
+}
+
+if(!function_exists('movie_cast')){
+    function movie_cast($id){
+        return  Cast::where('movie_id','=',$id)->get();
+    }
+}
+
+if(!function_exists('movie_director')){
+    function movie_director($id){
+        
+        $director = Director::where('movie_id','=',$id)->get();
+        return $director;
+    }
+}
+
+if(!function_exists('movie_producer')){
+    function movie_producer($id){
+        return Producer::where('movie_id','=',$id)->get();
+    }
+}
+
+
+
+
+/*
+----------------------------------------------------------
+----------------------------------------------------------
+SINGLE PAGE HELPER
+----------------------------------------------------------
+----------------------------------------------------------
+*/
+
+if(!function_exists('show_seat')){
+    function show_seat($show_id){
+        // dd($show_id);
+        $seat = Seat::where('show_id','=','1')->get();
+        return $seat;
+    }
+}
+
+if(!function_exists('screen_show')){
+    function screen_show($show_id){
+        return Screen::where('show_id','=',$show_id)->get();
+    }
+}
+
+if(!function_exists('seat_row')){
+    function seat_row($id){
+        return SeatRow::findorFail($id);
+    }
+}
+if(!function_exists('seat_column')){
+    function seat_column($id){
+        return SeatColumn::findorFail($id);
+    }
+}
+
+
+
+if(!function_exists('seat_row_group')){
+    function seat_row_group($screen_id){
+        return Seat::groupBy('row_id','row_id')->where('screen_id','=',$screen_id)->get();
+    }
+}
+
+
+if(!function_exists('seat_column_group')){
+    function seat_column_group($row_id){
+        // dd($row_id);
+        $data = Seat::where('row_id','=',$row_id)->get();
+        return $data;
+    }
+}
+
+
+if(!function_exists('seat_column_group_data')){
+    function seat_column_group_data($row_id){
+      $query = "SELECT * FROM seats WHERE row_id = :row_id" ;
+      $params = array(
+          'row_id' => $row_id,
+      );
+      return DatabaseProvider::DBRaw($query,$params);
+    }
+}
+
+
+if(!function_exists('get_seat_status')){
+    function get_seat_status($seat_id){
+        $seat = Order::where('seat_id','=',$seat_id)->first();
+        return $seat;
+    }
+}
+
+
+if(!function_exists('coming_soon_movie')){
+    function coming_soon_movie(){
+       $today = Carbon::today()->toDateString();
+       $nextweek = Carbon::today()->addWeek()->toDateString();
+    //    dd($nextweek);
+        $movie = Movie::where('release_date','>',$nextweek)->get();
+       return $movie;
+    }
+
+}

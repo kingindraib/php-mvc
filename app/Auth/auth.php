@@ -3,7 +3,7 @@ namespace App\Auth;
 use App\Provider\DatabaseProvider;
 use App\Auth\HasAuthentiacible;
 use PDO;
-session_start();
+// session_start();
 trait Authenticible{
     // protected static $table;
     public static function login(array $creadintial) {
@@ -37,23 +37,14 @@ trait Authenticible{
         $db = $databaseProvider->getDB();
        
         $table =static::$table;
-        // print_r($creadintial);
-        // die();
-        
-        // $placeholders = ':' . implode(', :', array_keys($creadintial));
-        // $sql = "SELECT * FROM {$table} WHERE username = :username AND password = :password";
         $placeholders = ':' . implode(', :', array_keys($creadintial));
-        // print_r($placeholders);
-        // die();
 
         $sql = "SELECT * FROM {$table} WHERE " . implode(' AND ', array_map(function($key) {
             return "{$key} = :{$key}";
         }, array_keys($creadintial)));
         
         $stmt = $db->prepare($sql);
-        // $stmt->bindParam(':username', $username);
-        // $stmt->bindParam(':password', $password);
-        // $stmt->execute();
+     
         $stmt->execute($creadintial);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $_SESSION['session_data']= $result;

@@ -7,7 +7,7 @@ class Seat extends Model{
     protected static $fillable=[
         'seat_name',
         'seat_code',
-        'show_code',
+        'screen_id',
         'row_id',
         'column_id',
         'status',

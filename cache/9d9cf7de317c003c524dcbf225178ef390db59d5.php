@@ -164,6 +164,10 @@ use App\Components\Form;
 
 					</div>
 					<div class="col-md-6">
+						<?php echo e(Form::formgroup('Movie Type','text','movie_type','','',$data->movie_type)); ?>
+
+					</div>
+					<div class="col-md-6">
 						<?php echo e(Form::formgroup('Duretion','text','duretion','','',$data->duretion)); ?>
 
 					</div>
@@ -191,7 +195,13 @@ use App\Components\Form;
 					<div class="form-group">
 						<label for="">Threator</label>
 						<select name="threator_id[]" id="movie_threator" class="select2 form-control" multiple="multiple" required>
-							<option value="<?php echo e($movietherator->movie_id); ?>" selected><?php echo e(threator_name($movietherator->threator_id)->threator_name); ?></option>
+							<?php if($movietherator == NULL): ?>
+							<option value="<?php echo e($movietherator->movie_id); ?>" selected><?php echo e(threator_name($movietherator->threator_id)->threator_name ?? 'N/A'); ?></option>
+							<?php else: ?>
+								<?php $__currentLoopData = threator(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $threator): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<option value="<?php echo e($threator['id']); ?>"><?php echo e($threator['threator_name']); ?></option>
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+							<?php endif; ?>
 							
 						</select>
 					</div>

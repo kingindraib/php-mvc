@@ -13,8 +13,8 @@
 			</div>
 			<div class="profile">
 				<div class="info">
-					<p>Hey, <b>Indra</b></p>
-					<small class="text-muted">Admin</small>
+					<p>Hey, <b>{{ auth()->first_name }}</b></p>
+					<small class="text-muted">{{ auth()->last_name }}</small>
 				</div>
 				<div class="profile-photo">
 					<img src="{{url('public/admin/images/profile-1.jpg')}}">

@@ -21,7 +21,8 @@ class Movie extends Model{
         'distributor_code',
         'image',
         'description',
-        'slug'
+        'slug',
+        'movie_type',
     ];
 
 }

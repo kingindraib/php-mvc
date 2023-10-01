@@ -8,7 +8,7 @@ use App\Components\Form;
 <div class="container-md">
     <div class="row">
         <div class="col-md-8 mt-3">
-            <a href="{{url('admin/dashboard/movie/settngs/seatrow/index')}}" class="btn btn-success">back <i class="fa-solid fa-backward"></i></a>
+            <a href="{{url('admin/dashboard/movie/settngs/seatcolumn/index')}}" class="btn btn-success">back <i class="fa-solid fa-backward"></i></a>
         </div>
         <div class="col-md-6 m-auto">
             @include('message.message')

@@ -9,7 +9,7 @@ use App\Components\Form;
 <div class="container-md">
     <div class="row">
         <div class="col-md-8 mt-3">
-            <a href="{{url('admin/dashboard/movie/settngs/seatrow/index')}}" class="btn btn-success">back <i class="fa-solid fa-backward"></i></a>
+            <a href="{{url('admin/dashboard/movie/settngs/seat/index')}}" class="btn btn-success">back <i class="fa-solid fa-backward"></i></a>
         </div>
         <div class="col-md-6 m-auto">
             @include('message.message')
@@ -44,12 +44,12 @@ use App\Components\Form;
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="">Select Show</label>
-                            <select name="show_code" id="" class="form-control">
+                            <label for="">Select Screen</label>
+                            <select name="screen_id" id="" class="form-control">
                                 <option value="">select one</option>
-                                @foreach (show() as $rows)
+                                @foreach (screen() as $rows)
                                        <?php $rows = obj($rows); ?>
-                                    <option value="{{$rows->id}}">{{$rows->show_name}}</option>
+                                    <option value="{{$rows->id}}">{{$rows->screen_name}}</option>
                                 @endforeach
                                
                             </select>

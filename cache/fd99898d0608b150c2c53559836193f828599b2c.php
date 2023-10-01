@@ -13,7 +13,7 @@
 <?php if(!empty(session_message('errors_message'))): ?>
 <div class="alert alert-danger" id="alert-message">
     <button type="button" class="close" data-dismiss="alert" id="close-btn">x</button>
-    <strong>Failled!</strong>
+    <strong>Message!</strong>
     <?php echo e(session_message('errors_message','message')); ?>
 
 </div>
