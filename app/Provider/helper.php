@@ -220,3 +220,10 @@ if(!function_exists('auth')){
           }
     }
 }
+
+
+if(!function_exists('get')){
+    function get($args){
+        return $_GET[$args];
+    }
+}

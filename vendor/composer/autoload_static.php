@@ -26,6 +26,11 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         array (
             'voku\\' => 5,
         ),
+        'c' => 
+        array (
+            'chillerlan\\Settings\\' => 20,
+            'chillerlan\\QRCode\\' => 18,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php83\\' => 23,
@@ -37,13 +42,20 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
             'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Dotenv\\' => 25,
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
+            'Picqer\\Barcode\\' => 15,
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'M' => 
+        array (
+            'Masterminds\\' => 12,
         ),
         'J' => 
         array (
@@ -60,8 +72,13 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
             'Illuminate\\Container\\' => 21,
             'Illuminate\\Bus\\' => 15,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+        ),
         'D' => 
         array (
+            'Dompdf\\' => 7,
             'Doctrine\\Inflector\\' => 19,
         ),
         'C' => 
@@ -79,6 +96,14 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'chillerlan\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
+        ),
+        'chillerlan\\QRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
         ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (
@@ -116,6 +141,14 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         array (
             0 => __DIR__ . '/..' . '/symfony/dotenv',
         ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -128,9 +161,17 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
+        'Picqer\\Barcode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/picqer/php-barcode-generator/src',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
         'Jenssegers\\Blade\\' => 
         array (
@@ -169,6 +210,14 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'Illuminate\\Bus\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/bus',
+        ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'Doctrine\\Inflector\\' => 
         array (
@@ -211,6 +260,7 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'App\\Controllers\\admin\\TicketsSettingsController' => __DIR__ . '/../..' . '/app/Controllers/admin/TicketsSettingsController.php',
         'App\\Controllers\\admin\\UserController' => __DIR__ . '/../..' . '/app/Controllers/admin/UserController.php',
         'App\\Controllers\\auth\\LoginController' => __DIR__ . '/../..' . '/app/Controllers/auth/LoginController.php',
+        'App\\Controllers\\home\\EsewaController' => __DIR__ . '/../..' . '/app/Controllers/home/EsewaController.php',
         'App\\Controllers\\home\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/home/HomeController.php',
         'App\\Controllers\\home\\OrderController' => __DIR__ . '/../..' . '/app/Controllers/home/OrderController.php',
         'App\\Controllers\\home\\PageController' => __DIR__ . '/../..' . '/app/Controllers/home/PageController.php',
@@ -241,6 +291,7 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'App\\Provider\\Validation' => __DIR__ . '/../..' . '/app/Provider/Validation.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Migrations' => __DIR__ . '/../..' . '/app/Provider/Migrations.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',

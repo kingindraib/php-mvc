@@ -356,3 +356,29 @@ $routes->add($staticroute.'update_password', new Route($staticurl.'update_passwo
 
 $routes->add('home.single', new Route('/movie/single/{id}', ['controller' => 'home\SingleController@index']));
 $routes->add('home.single.seat', new Route('/movie/single/seat/{id}', ['controller' => 'home\SingleController@seat']));
+
+
+/*
+*********************************************************
+*********************************************************
+                TICKET ORDER PART ROUTE
+*********************************************************
+*********************************************************
+*/
+
+$routes->add('ticket.order', new Route('/movie/ticket/select/{id}', ['controller' => 'home\OrderController@ticketselect']));
+$routes->add('ticket.order.remove', new Route('/movie/ticket/select/remove/{id}', ['controller' => 'home\OrderController@removeselect']));
+$routes->add('ticket.order.totalamount', new Route('/movie/ticket/totalamount', ['controller' => 'home\OrderController@totalamount'])); 
+$routes->add('ticket.payment.page', new Route('/movie/ticket/payment_page/{id}', ['controller' => 'home\OrderController@payment_page'])); 
+$routes->add('ticket.page', new Route('/movie/ticket/ticket_page', ['controller' => 'home\OrderController@ticket_page']));
+
+/*
+*********************************************************
+*********************************************************
+               ESEWA MANAGEMENT ROUTE
+*********************************************************
+*********************************************************
+*/
+
+$routes->add('esewa.payment.success', new Route('/movie/esewa/payment_success', ['controller' => 'home\EsewaController@payment_success']));
+$routes->add('esewa.payment.failled', new Route('/movie/esewa/payment_failled', ['controller' => 'home\EsewaController@payment_failled']));

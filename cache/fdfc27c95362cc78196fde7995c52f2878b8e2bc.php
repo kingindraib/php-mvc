@@ -17,7 +17,7 @@
             </div>
             <div class="seat_type fast_felling">
                 <input type="checkbox">
-            <p>Fast feeling</p>
+            <p>my Seat</p>
             </div>
             <div class="seat_type soldout">
                 <input type="checkbox">
@@ -30,7 +30,10 @@
         </div>
         
         <div class="price_count">
-            <p>Total :Rs. 200</p>
+            <p id="total_selected_amount">Total :Rs. <?php echo e(total_selected_seat_price()); ?></p>
+            <?php if(total_selected_seat_price() > 0): ?>
+            <a href="<?php echo e(url('ticket/payment_page/'.$movie_id)); ?>" class="btn btn-danger">Confirm</a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -42,8 +45,16 @@
         <div class="left_part">
             
             
+            
             <?php
-            //  dd(get_seat_status(1)->scalar);  
+            //  dd(empty(get_seat_status(2)->scalar));  
+            //  dd(get_seat_status(2)->scalar);
+            // dd(get_seat_status(1));
+            // if(isset(get_seat_status(1)->scalar)){
+            //     dd("true");
+            // }else{
+            //     dd("false");
+            // }
             // dd(Auth());
              ?>
             <?php $__currentLoopData = seat_row_group($screen_id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rowItems=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -52,17 +63,20 @@
                 <ul class="seat_row">
                     <?php $__currentLoopData = seat_column_group_data($row['row_id']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($data['status']=='publish'): ?>
-                    <?php if(empty(get_seat_status($data['id'])->scalar)): ?>
-                    <li><a href="#" class="btn btn-success"><?php echo e($data['seat_name']); ?></a></li>
+                    <?php if(isset(get_seat_status($data['id'])->scalar)): ?>
+                    <li><a href="<?php echo e(url('ticket/select/'.$data['id'].'?screen_id='.$screen_id.'&show_id='.$movieshow->shows_id.'&movie_id='.$movieshow->movie_id.'')); ?>" class="btn btn-success"><?php echo e($data['seat_name']); ?></a></li>
+                    <?php elseif(get_seat_status($data['id'])->status ==1 && get_seat_status($data['id'])->user_id == Auth()->id): ?>
+                    <li><a href="javascript:;" class="btn btn-warning"><?php echo e($data['seat_name']); ?></a></li>
                     <?php elseif(get_seat_status($data['id'])->status ==1): ?>
-                    <li><a href="#" class="btn btn-success"><?php echo e($data['seat_name']); ?></a></li>
+                    <li><a href="javascript:;" class="btn btn-danger"><?php echo e($data['seat_name']); ?></a></li>
                     <?php elseif(get_seat_status($data['id'])->status ==0 && get_seat_status($data['id'])->user_id == Auth()->id): ?>
-                    <li><a href="#" class="btn btn-success"><?php echo e($data['seat_name']); ?></a></li>
+                    <li><a href="<?php echo e(url('ticket/select/remove/'.$data['id'])); ?>" class="btn btn-primary"><?php echo e($data['seat_name']); ?></a></li>
                     <?php endif; ?>
                     <?php else: ?> 
-                    <li><a href="#" class="btn btn-secondary"><?php echo e($data['seat_name']); ?></a></li>
+                    <li><a href="javascript:;" class="btn btn-secondary"><?php echo e($data['seat_name']); ?></a></li>
                     <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                     
                 </ul>
             </div>
@@ -91,4 +105,7 @@
 </div>
 
 <?php $__env->stopSection(); ?>
+<?php $__env->startPush('home_script'); ?>
+
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('home.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/home/single/seat.blade.php ENDPATH**/ ?>

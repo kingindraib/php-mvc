@@ -48,6 +48,7 @@ class SingleController extends Controller
             'movie_detail' =>$movie_detail,
             'seat'=>$seat,
             'screen_id' => screen_code($showdata->screen_code)->id,
+            'movie_id' => $movieshow->movie_id,
         ];
         return view('home.single.seat',$data);
     }

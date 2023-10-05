@@ -162,6 +162,23 @@ if(!function_exists('movie_producer')){
 }
 
 
+if(!function_exists('movie_detail')){
+    function movie_detail($id){
+        return Movie::findorFail($id);
+    }
+}
+
+if(!function_exists("seat_detail")){
+    function seat_detail($id){
+        return Seat::findorFail($id);
+    }
+}
+
+if(!function_exists("show_detail")){
+    function show_detail($id){
+        return Show::findorFail($id);
+    }
+}
 
 
 /*
@@ -243,4 +260,42 @@ if(!function_exists('coming_soon_movie')){
        return $movie;
     }
 
+}
+
+
+if(!function_exists('total_selected_seat_price')){
+    function total_selected_seat_price(){
+        $user_id = Auth()->id;
+        $seat = Order::where('user_id','=',$user_id)->get();
+        $total = 0;
+        if($seat != null){
+            foreach($seat as $sdata){
+                if($sdata['status']==0){
+                    $total += $sdata['amount'];
+                }
+                
+            }
+        }   
+        
+        return $total;
+    }
+}
+
+if(!function_exists('carbon_date_formattor')){
+    function carbon_date_formattor($date){
+        return Carbon::parse($date)->format('d M Y');
+    }
+}
+
+
+if(!function_exists('generate_random_string')){
+    function generate_random_string($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 }

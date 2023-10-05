@@ -23,7 +23,10 @@
         "symfony/dotenv": "^6.3",
         "phpmailer/phpmailer": "^6.8",
         "jenssegers/blade": "^1.4",
-        "nesbot/carbon": "^2.71"
+        "nesbot/carbon": "^2.71",
+        "chillerlan/php-qrcode": "^4.3",
+        "picqer/php-barcode-generator": "^2.4",
+        "dompdf/dompdf": "^2.0"
     },
 
     "config": {
