@@ -864,3 +864,19 @@ footer .footer-items {
     }
 }
 
+/* user dashboard main */
+
+div#userdashboard {
+    width: 100%;
+    margin: 10px 15px !important;
+}
+
+ul.profile_detail li {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+ul.profile_detail li span{
+    font-weight: 700;
+}

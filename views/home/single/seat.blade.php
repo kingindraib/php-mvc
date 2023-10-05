@@ -1,11 +1,38 @@
 @extends('home.master')
 @section('title',$movie_detail->movie_name)
+@if(total_selected_seat_price())
+@push('home_script')
+<script>
+    $(document).ready(function() {
+      var seconds = 10; // Set the initial countdown time in seconds
+      $('#countdown').text('your time is start please complete with in 10 min');
+      // Function to update the countdown timer
+      function updateCountdown() {
+        if (seconds > 0) {
+          seconds--;
+          $('#timer').text(seconds);
+        } else {
+          clearInterval(timerInterval); // Stop the countdown when it reaches 0
+          $('#countdown').text('Countdown: Time is up!');
+        }
+      }
+    
+      // Call the updateCountdown function every second (1000 milliseconds)
+      var timerInterval = setInterval(updateCountdown, 1000);
+    });
+    </script>
+@endpush
+@endif
 @section('body')
+
 <div class="container-md">
     <div class="row mt-4">
         <div class="col-md-12 my-2 py-2 px-2 brade-camp">
             <span class="seat_title text-dark">Jaari</span>
             <p class="text-dark">url->Aud name | Date and time</p>
+        </div>
+        <div class="col-md-12">
+            <h3 id="countdown"></h3>
         </div>
     </div>
     <!-- new row -->
@@ -164,4 +191,7 @@
     });
     
 </script> --}}
+
+
+
 @endpush

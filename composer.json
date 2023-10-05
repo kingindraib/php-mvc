@@ -13,7 +13,8 @@
               "app/provider/ViewProvider.php",
               "app/provider/helper.php",
               "app/components/form.php",
-              "app/Helper/helper.php"
+              "app/Helper/helper.php",
+              "app/Helper/front_helper.php"
             ]
     },
     "require": {

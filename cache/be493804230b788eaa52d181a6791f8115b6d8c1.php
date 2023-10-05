@@ -16,4 +16,14 @@
 
 
 	 
-	 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/admin/includes/css.blade.php ENDPATH**/ ?>
+	 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+	 <style>
+		.ck-editor__editable {
+			/* border-color: var(--ck-color-base-border); */
+			height: 300px;
+		}
+		.ck.ck-editor__main {
+				height: 300px;
+			}
+	 </style><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/admin/includes/css.blade.php ENDPATH**/ ?>

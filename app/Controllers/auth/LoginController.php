@@ -93,4 +93,12 @@ class LoginController extends Controller
             }
         }
    }
+
+   public function logout(RouteCollection $routes)
+   {
+        User::logout();
+        set_message('success_message','registration success success');
+        return route('login');
+
+   }
 }

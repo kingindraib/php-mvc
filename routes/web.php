@@ -25,6 +25,7 @@ $routes->add('home.index', new Route('/movie/', ['controller' => 'home\HomeContr
 *********************************************************
 */
 $routes->add('auth.login.index', new Route('/movie/login', ['controller' => 'auth\LoginController@index']));
+$routes->add('auth.logout.index', new Route('/movie/logout', ['controller' => 'auth\LoginController@logout']));
 $routes->add('auth.login.submit', new Route('movie/login/submit', ['controller' => 'auth\LoginController@login']));
 $routes->add('auth.register', new Route('movie/register', ['controller' => 'auth\LoginController@register']));
 $routes->add('auth.register.submit', new Route('movie/register/submit', ['controller' => 'auth\LoginController@store_register']));
@@ -307,7 +308,58 @@ $routes->add($staticroute.'update_password', new Route($staticurl.'update_passwo
 
 
 
+/*
+*********************************************************
+*********************************************************
+                CATEGORYMANAGEMENT ROUTE
+*********************************************************
+*********************************************************
+*/
+$staticurl ='/movie/admin/dashboard/category/';
+$staticroute = 'admin.movie.category.';
+$staticcontroller = 'admin\CategoryController@';
+$routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
+$routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
+$routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));
+$routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
+$routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
+$routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
 
+
+/*
+*********************************************************
+*********************************************************
+                POSTMANAGEMENTROUTE ROUTE
+*********************************************************
+*********************************************************
+*/
+$staticurl ='/movie/admin/dashboard/post_management/';
+$staticroute = 'admin.movie.post_management.';
+$staticcontroller = 'admin\PostController@';
+$routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
+$routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
+$routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));
+$routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
+$routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
+$routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
+
+
+/*
+*********************************************************
+*********************************************************
+                TICKETING BOOKING ROUTE
+*********************************************************
+*********************************************************
+*/
+$staticurl ='/movie/admin/dashboard/ticket_management/booking/';
+$staticroute = 'admin.movie.ticketnppking.';
+$staticcontroller = 'admin\TicketBookingController@';
+$routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
+$routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
+$routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));
+$routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
+$routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
+$routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
 
 
 
@@ -355,6 +407,10 @@ $routes->add($staticroute.'update_password', new Route($staticurl.'update_passwo
 */
 
 $routes->add('home.single', new Route('/movie/single/{id}', ['controller' => 'home\SingleController@index']));
+$routes->add('home.archive', new Route('/movie/archive-page/{id}', ['controller' => 'home\ArchiveController@archive']));
+
+
+
 $routes->add('home.single.seat', new Route('/movie/single/seat/{id}', ['controller' => 'home\SingleController@seat']));
 
 
@@ -382,3 +438,20 @@ $routes->add('ticket.page', new Route('/movie/ticket/ticket_page', ['controller'
 
 $routes->add('esewa.payment.success', new Route('/movie/esewa/payment_success', ['controller' => 'home\EsewaController@payment_success']));
 $routes->add('esewa.payment.failled', new Route('/movie/esewa/payment_failled', ['controller' => 'home\EsewaController@payment_failled']));
+
+
+
+/*
+*********************************************************
+*********************************************************
+                USER ACCOUNT ROUTE
+*********************************************************
+*********************************************************
+*/
+
+$routes->add('user.account', new Route('/movie/user/dashboard', ['controller' => 'home\UserController@index']));
+$routes->add('user.account.edit', new Route('/movie/user/dashboard/edit_profile', ['controller' => 'home\UserController@edit_profile']));
+$routes->add('user.account.update', new Route('/movie/user/dashboard/update_profile', ['controller' => 'home\UserController@update_profile']));
+$routes->add('user.myticket', new Route('/movie/user/dashboard/myticket', ['controller' => 'home\UserController@myticket']));
+$routes->add('user.user_history', new Route('/movie/user/dashboard/user_history', ['controller' => 'home\UserController@user_history']));
+// $routes->add('user.myticket', new Route('/movie/user/dashboard/myticket', ['controller' => 'home\UserController@myticket']));

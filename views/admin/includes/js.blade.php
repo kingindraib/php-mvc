@@ -24,4 +24,20 @@
 {{-- select 2 --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+{{-- ck editor --}}
+
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+<script>
+	ClassicEditor
+			.create( document.querySelector( '#editor' ) )
+			.then( editor => {
+					console.log( editor );
+			} )
+			.catch( error => {
+					console.error( error );
+			} );
+</script>
+
 @stack('scripts')

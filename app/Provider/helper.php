@@ -227,3 +227,9 @@ if(!function_exists('get')){
         return $_GET[$args];
     }
 }
+
+if(!function_exists('compact')){
+    function compact($args){
+        return ['$args'=>'$'.$args];
+    }
+}

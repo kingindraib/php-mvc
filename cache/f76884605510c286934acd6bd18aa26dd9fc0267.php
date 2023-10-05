@@ -55,7 +55,7 @@
         <span class="material-symbols-sharp">settings</span>
         <h3>Settings</h3>
     </a>
-    <a href="#">
+    <a href="<?php echo e(url('logout')); ?>">
         <span class="material-symbols-sharp">logout</span>
         <h3>Logout</h3>
     </a>

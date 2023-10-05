@@ -18,4 +18,5 @@ return array(
     '167a62017ae3034589bec6be4f6b15a7' => $baseDir . '/app/provider/helper.php',
     'cfd768b27e646ae29fdd936285be7539' => $baseDir . '/app/components/form.php',
     '0d187ede6610edfd4677e629e3404f9a' => $baseDir . '/app/Helper/helper.php',
+    '8f4b48b854ded6e2c0cd330cdcc9a59c' => $baseDir . '/app/Helper/front_helper.php',
 );

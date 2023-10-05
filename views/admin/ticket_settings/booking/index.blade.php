@@ -1,17 +1,17 @@
 @extends('admin.master')
-@section('title','dashboard')
-@section('page_title','Screen Management')
+@section('title','Online Ticket Booked')
+@section('page_title','Ticket Management')
 @section('body')
 <?php
-// print_r($threator);
+// print_r($booking);
 // die();
 $i = 1;
 ?>
 <div class="container-md">
     <div class="row my-3">
-        <div class="col-md-5">
+        {{-- <div class="col-md-5">
             <a href="{{ url('admin/dashboard/movie/settngs/screen/create') }}" class="btn btn-info">Add Screen <i class="fa-solid fa-film"></i></a>
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="mt-2"></div>
             @include('message.message')
@@ -20,18 +20,18 @@ $i = 1;
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th>Screen Name</th>
-                            <th>Screen Code</th>
-                            <th>Threator Code</th>
-                            <th>Rows</th>
-                            <th>Column</th>
+                            <th>User Name</th>
+                            <th>Movie Name</th>
+                            <th>Product ID</th>
+                            <th>Total Amount</th>
+                            <th>Order ID</th>
+                            <th>Booked Date</th>
                             <th>Status</th>
-                            <th>Action</th>
                            
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($screen as $data)
+                        @forelse($booking as $data)
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $data['screen_name'] }}</td>
@@ -46,10 +46,10 @@ $i = 1;
                                 <span class='badge bg-success'>{{ $data['status'] }}</span> 
                                 @endif
                             </td>    
-                            <td>
+                            {{-- <td>
                                 <a href="{{url('admin/dashboard/movie/settngs/screen/edit/'.$data['id'])}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="{{url('admin/dashboard/movie/settngs/screen/delete/'.$data['id'])}}" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>
-                            </td> 
+                            </td>  --}}
                         </tr>
                         @empty 
                         <tr>

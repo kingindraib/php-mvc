@@ -286,13 +286,15 @@ class Model extends DatabaseProvider{
         // print_r(static::$groupBy);
           // SELECT row_id FROM seats GROUP BY row_id;
         //   print_r(static::$selectColumns);
+        // dd($table);
         // print_r(static::$requestTable);
         //   die();
-   
+        // dd(true);
        
         // dd(static::$fillable);
 
         if (!empty(static::$conditions) && static::$requestTable == $table) {
+            // dd(true);
             $field = static::$fillable;
             $reqcondition = static::$conditions;
             $columns = array_map(function ($item) {
@@ -355,6 +357,18 @@ class Model extends DatabaseProvider{
         $db = $databaseProvider->getDB();
         $table =static::$table;
         $sql = "SELECT COUNT(*) as count FROM {$table}";
+    }
+
+    public static function all(){
+        $databaseProvider = new DatabaseProvider();
+        $db = $databaseProvider->getDB();
+        $table =static::$table;   
+        // $groupBy = static::$selectColumns;
+        $sql = "SELECT * FROM {$table}";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     }
     
 

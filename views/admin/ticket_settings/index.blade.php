@@ -5,7 +5,7 @@
     <div class="container-md">
         <div class="row my-3">
             <div class="col-md-4">
-                <a href="{{ url('admin/dashboard/movie/settngs/threator/index') }}">
+                <a href="{{ url('admin/dashboard/ticket_management/booking/index') }}">
                     <div class="card">
                         <div class="container-box">
                             <div class="icon">

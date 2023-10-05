@@ -19,6 +19,7 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         '167a62017ae3034589bec6be4f6b15a7' => __DIR__ . '/../..' . '/app/provider/helper.php',
         'cfd768b27e646ae29fdd936285be7539' => __DIR__ . '/../..' . '/app/components/form.php',
         '0d187ede6610edfd4677e629e3404f9a' => __DIR__ . '/../..' . '/app/Helper/helper.php',
+        '8f4b48b854ded6e2c0cd330cdcc9a59c' => __DIR__ . '/../..' . '/app/Helper/front_helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -244,6 +245,7 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
         'App\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Controllers/PageController.php',
         'App\\Controllers\\admin\\AdminController' => __DIR__ . '/../..' . '/app/Controllers/admin/AdminController.php',
+        'App\\Controllers\\admin\\CategoryController' => __DIR__ . '/../..' . '/app/Controllers/admin/CategoryController.php',
         'App\\Controllers\\admin\\DistributorController' => __DIR__ . '/../..' . '/app/Controllers/admin/DistributorController.php',
         'App\\Controllers\\admin\\MovieController' => __DIR__ . '/../..' . '/app/Controllers/admin/MovieController.php',
         'App\\Controllers\\admin\\MovieSettingsController' => __DIR__ . '/../..' . '/app/Controllers/admin/MovieSettingsController.php',
@@ -267,7 +269,9 @@ class ComposerStaticInitd231f6c2672e9f677e38037f1dbd7976
         'App\\Controllers\\home\\SingleController' => __DIR__ . '/../..' . '/app/Controllers/home/SingleController.php',
         'App\\Middleware\\AuthMiddleware' => __DIR__ . '/../..' . '/app/Middleware/AuthMiddleware.php',
         'App\\Middleware\\Middleware' => __DIR__ . '/../..' . '/app/Middleware/Middleware.php',
+        'App\\Models\\Account' => __DIR__ . '/../..' . '/app/Models/Account.php',
         'App\\Models\\Cast' => __DIR__ . '/../..' . '/app/Models/Cast.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Director' => __DIR__ . '/../..' . '/app/Models/Director.php',
         'App\\Models\\Distributor' => __DIR__ . '/../..' . '/app/Models/Distributor.php',
         'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Model.php',
