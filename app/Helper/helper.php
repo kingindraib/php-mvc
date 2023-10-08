@@ -245,8 +245,28 @@ if(!function_exists('seat_column_group_data')){
 
 if(!function_exists('get_seat_status')){
     function get_seat_status($seat_id){
-        $seat = Order::where('seat_id','=',$seat_id)->first();
-        return $seat;
+        // dd($seat_id);
+        // $seat_id = 30;
+    $query = "SELECT * FROM orders WHERE seat_id = :seat_id LIMIT 1" ;
+      $params = array(
+          'seat_id' => $seat_id,
+      );
+      $seat =  DatabaseProvider::DBRaw($query,$params);
+    //   dd($se$seat
+    // dd(obj($seat));
+      if(!empty($seat)){
+       
+        return obj($seat[0]);
+      }else{
+        
+        return false;
+      
+      }
+      
+
+        // $seat = Order::where('seat_id','=',$seat_id)->first();
+        // dd($seat);
+        // return $seat;
     }
 }
 

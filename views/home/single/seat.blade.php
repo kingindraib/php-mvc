@@ -76,13 +76,13 @@
             <?php
             //  dd(empty(get_seat_status(2)->scalar));  
             //  dd(get_seat_status(2)->scalar);
-            // dd(get_seat_status(1));
+            // dd(get_seat_status(2));
             // if(isset(get_seat_status(1)->scalar)){
             //     dd("true");
             // }else{
             //     dd("false");
             // }
-            // dd(Auth());
+            // dd(Auth()); 
              ?>
             @foreach(seat_row_group($screen_id) as $rowItems=>$row)
             @if($rowItems<7)
@@ -90,7 +90,7 @@
                 <ul class="seat_row">
                     @foreach(seat_column_group_data($row['row_id']) as $key=>$data)
                     @if($data['status']=='publish')
-                    @if(isset(get_seat_status($data['id'])->scalar))
+                    @if(get_seat_status($data['id']) == false)
                     <li><a href="{{ url('ticket/select/'.$data['id'].'?screen_id='.$screen_id.'&show_id='.$movieshow->shows_id.'&movie_id='.$movieshow->movie_id.'') }}" class="btn btn-success">{{ $data['seat_name'] }}</a></li>
                     @elseif(get_seat_status($data['id'])->status ==1 && get_seat_status($data['id'])->user_id == Auth()->id)
                     <li><a href="javascript:;" class="btn btn-warning">{{ $data['seat_name'] }}</a></li>

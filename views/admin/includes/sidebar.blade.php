@@ -48,7 +48,7 @@
         <h3>Messages</h3>
         <span class="message-count">20</span>
     </a>
-    <a href="#">
+    <a href="{{ url('admin/dashboard/faq/index') }}">
         <span class="material-symbols-sharp">assignment</span>
         <h3>FAQs</h3>
     </a>

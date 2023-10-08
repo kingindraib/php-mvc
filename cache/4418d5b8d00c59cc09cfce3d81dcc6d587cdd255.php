@@ -9,7 +9,7 @@ $i = 1;
 <div class="container-md">
     <div class="row my-3">
         <div class="col-md-5">
-            <a href="" class="btn btn-info">Add User <i class="fa-solid fa-user"></i></a>
+            
         </div>
         <div class="col-md-12">
             <div class="row my-3">
@@ -32,7 +32,13 @@ $i = 1;
                             <td><?php echo e($data['first_name']); ?> <?php echo e($data['last_name']); ?></td>
                             <td><?php echo e($data['email']); ?></td>
                             <td><?php echo e($data['phone']); ?></td>
-                            <td>Admin</td>
+                            <td>
+                                <?php if($data['user_type']==0): ?>
+                                user
+                                <?php else: ?> 
+                                admin
+                                <?php endif; ?>
+                            </td>
                             <td><span class='badge bg-success'>Active</span></td>     
                             <td>
                                 

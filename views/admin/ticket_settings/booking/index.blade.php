@@ -34,11 +34,11 @@ $i = 1;
                         @forelse($booking as $data)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $data['screen_name'] }}</td>
-                            <td>{{ $data['screen_code'] }}</td>
-                            <td>{{ $data['threator_code'] }}</td>
-                            <td>{{ $data['seat_rows'] }}</td>
-                            <td>{{ $data['seat_columns'] }}</td>
+                            <td>{{ $data['user_id'] }}</td>
+                            <td>{{ $data['user_id'] }}</td>
+                            <td>{{ $data['user_id'] }}</td>
+                            <td>{{ $data['user_id'] }}</td>
+                            <td>{{ $data['user_id'] }}</td>
                             <td>
                                 @if($data['status'] == 'draft')
                                 <span class='badge bg-danger'>{{ $data['status'] }}</span>

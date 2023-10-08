@@ -16,6 +16,10 @@ class AdminController extends Controller
     public function index(RouteCollection $routes)
     {
         // dd(true);
+        if(Auth()->user_type==1){
         return view('admin.index');
+        }else{
+            return route('user/dashboard');
+        }
     }
 }

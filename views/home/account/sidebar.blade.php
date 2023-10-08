@@ -14,11 +14,11 @@
             <div class="sidebar-item">
                 <a href="{{ url('user/dashboard/user_history') }}">User History</a>
             </div>
-            <div class="sidebar-item">
+            {{-- <div class="sidebar-item">
                 <a href="">Change Password</a>
-            </div>
+            </div> --}}
             <div class="sidebar-item">
-                <a href="">FAQs</a>
+                <a href="{{ url('faq') }}">FAQs</a>
             </div>
             <div class="sidebar-item">
                 <a href="{{ url('logout') }}">Logout</a>

@@ -5,6 +5,7 @@ use App\Controllers\Controller;
 use Symfony\Component\Routing\RouteCollection;
 use App\Middleware\AuthMiddleware;
 use App\Models\User;
+use App\Models\Account;
 
 class UserController extends Controller
 {
@@ -42,12 +43,14 @@ class UserController extends Controller
 
     public function myticket(RouteCollection $routes)
     {
-        return view('home.account.parts.my_ticket');
+        $myticket = Account::where('user_id','=',Auth()->id)->get();
+        return view('home.account.parts.my_ticket',compact('myticket'));
     }
 
 
     public function user_history(RouteCollection $routes)
     {
+        
         return view('home.account.parts.user_history');
     }
 }

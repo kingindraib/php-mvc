@@ -1,15 +1,17 @@
 
-<?php $__env->startSection('title','Online Ticket Booked'); ?>
-<?php $__env->startSection('page_title','Ticket Management'); ?>
+<?php $__env->startSection('title','Faq management'); ?>
+<?php $__env->startSection('page_title','Faq Management'); ?>
 <?php $__env->startSection('body'); ?>
 <?php
-// print_r($booking);
+// print_r($threator);
 // die();
 $i = 1;
 ?>
 <div class="container-md">
     <div class="row my-3">
-        
+        <div class="col-md-5">
+            <a href="<?php echo e(url('admin/dashboard/faq/create')); ?>" class="btn btn-info">Add Faq <i class="fa-solid fa-film"></i></a>
+        </div>
         <div class="col-md-12">
             <div class="mt-2"></div>
             <?php echo $__env->make('message.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -18,25 +20,16 @@ $i = 1;
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th>User Name</th>
-                            <th>Movie Name</th>
-                            <th>Product ID</th>
-                            <th>Total Amount</th>
-                            <th>Order ID</th>
-                            <th>Booked Date</th>
+                            <th>Question</th>
                             <th>Status</th>
-                           
+                            <th>IS NAV</th>                           
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $__empty_1 = true; $__currentLoopData = $booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $faq; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($i++); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
+                            <td><?php echo e($data['question']); ?></td>                      
                             <td>
                                 <?php if($data['status'] == 'draft'): ?>
                                 <span class='badge bg-danger'><?php echo e($data['status']); ?></span>
@@ -44,7 +37,10 @@ $i = 1;
                                 <span class='badge bg-success'><?php echo e($data['status']); ?></span> 
                                 <?php endif; ?>
                             </td>    
-                            
+                            <td>
+                                <a href="<?php echo e(url('admin/dashboard/faq/edit/'.$data['id'])); ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="<?php echo e(url('admin/dashboard/faq/delete/'.$data['id'])); ?>" class="btn btn-danger" onclick="return confirm('are you sure ?')"><i class="fa-solid fa-trash"></i></a>
+                            </td> 
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?> 
                         <tr>
@@ -60,4 +56,4 @@ $i = 1;
 </div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/admin/ticket_settings/booking/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/admin/faq/index.blade.php ENDPATH**/ ?>

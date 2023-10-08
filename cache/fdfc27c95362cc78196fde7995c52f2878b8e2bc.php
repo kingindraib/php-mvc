@@ -76,13 +76,13 @@
             <?php
             //  dd(empty(get_seat_status(2)->scalar));  
             //  dd(get_seat_status(2)->scalar);
-            // dd(get_seat_status(1));
+            // dd(get_seat_status(2));
             // if(isset(get_seat_status(1)->scalar)){
             //     dd("true");
             // }else{
             //     dd("false");
             // }
-            // dd(Auth());
+            // dd(Auth()); 
              ?>
             <?php $__currentLoopData = seat_row_group($screen_id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rowItems=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php if($rowItems<7): ?>
@@ -90,7 +90,7 @@
                 <ul class="seat_row">
                     <?php $__currentLoopData = seat_column_group_data($row['row_id']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($data['status']=='publish'): ?>
-                    <?php if(isset(get_seat_status($data['id'])->scalar)): ?>
+                    <?php if(get_seat_status($data['id']) == false): ?>
                     <li><a href="<?php echo e(url('ticket/select/'.$data['id'].'?screen_id='.$screen_id.'&show_id='.$movieshow->shows_id.'&movie_id='.$movieshow->movie_id.'')); ?>" class="btn btn-success"><?php echo e($data['seat_name']); ?></a></li>
                     <?php elseif(get_seat_status($data['id'])->status ==1 && get_seat_status($data['id'])->user_id == Auth()->id): ?>
                     <li><a href="javascript:;" class="btn btn-warning"><?php echo e($data['seat_name']); ?></a></li>

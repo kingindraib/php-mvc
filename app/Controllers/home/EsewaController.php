@@ -5,17 +5,19 @@ use Symfony\Component\Routing\RouteCollection;
 use App\Middleware\AuthMiddleware;
 use App\Models\Show;
 use App\Models\Order;
+use App\Models\Account;
 
 class EsewaController extends Controller
 {
 	public function payment_success(RouteCollection $routes)
 	{
+        
 		if(get('q')){
             $res = get('q');
             // if($res == 'su'){
 
             // }
-
+                // dd($res);
             if($res == 'su'){
                 // dd(true);
     
@@ -38,16 +40,34 @@ class EsewaController extends Controller
     
                     if(strpos($response, "Success")){
                         // dd(true);
-                        $update_order = Order::where('user_id',auth()->user()->id)->get();
+                        // $account['order_id'] = 
+                        //    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,]
+                        // ;
+                        // print this array data
+                        // dd($account['order_id'][0]);
+                        // dd($account);
+                        $update_order = Order::where('user_id','=',Auth()->id)->get();
+                        // dd($update_order);
+                        $account['order_id'] = json_encode($update_order);
+                        $account['pid'] = get('oid');
+                        $account['refId'] = get('refId');
+                        $account['totalAmount'] = get('amt');
+                        $account['user_id'] = Auth()->id;
+                        $account['status'] = 'success';
+                        // dd($account);
                         foreach($update_order as $items){
                             if($items['status'] == 0){
+                                $account['movie_id'] = $items['movie_id'];
                                 $data['status'] = 1;
-                                Order::update($items->id,$data);
+                                $data['payment_method'] = 'esewa';
+                                Order::update($items['id'],$data);
                             }
                         }
-    
-                        // set_message('success_message','distributor Updated Success');
-                        // return route('admin/dashboard/distributor/index');    
+                    //   dd($account);
+                    Account::create($account);
+                        set_message('success_message','Ticked Booked Success');
+                        // return route('user/dashboard');    
+                        return route('ticket/ticket_page');    
                     //    return redirect()->route('order.user.invoice')->with('success_message','Order placed Success'); 
                     }else{
                         // dd(false);
@@ -65,7 +85,7 @@ class EsewaController extends Controller
 	}
 	public function payment_failled(RouteCollection $routes)
 	{
-		
+		echo "Something error";
 	}
 }
 	

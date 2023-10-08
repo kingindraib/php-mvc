@@ -360,6 +360,22 @@ $routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$
 $routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
 $routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
 $routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
+/*
+*********************************************************
+*********************************************************
+               FAQ MANAGEMENT  ROUTE
+*********************************************************
+*********************************************************
+*/
+$staticurl ='/movie/admin/dashboard/faq/';
+$staticroute = 'admin.faq.';
+$staticcontroller = 'admin\FaqController@';
+$routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
+$routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
+$routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));
+$routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
+$routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
+$routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
 
 
 
@@ -408,10 +424,12 @@ $routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['control
 
 $routes->add('home.single', new Route('/movie/single/{id}', ['controller' => 'home\SingleController@index']));
 $routes->add('home.archive', new Route('/movie/archive-page/{id}', ['controller' => 'home\ArchiveController@archive']));
+$routes->add('home.faq', new Route('/movie/faq', ['controller' => 'home\PageController@faq']));
 
 
 
 $routes->add('home.single.seat', new Route('/movie/single/seat/{id}', ['controller' => 'home\SingleController@seat']));
+$routes->add('home.movie.list', new Route('/movie/movie/list', ['controller' => 'home\SingleController@movie_list']));
 
 
 /*
@@ -436,8 +454,8 @@ $routes->add('ticket.page', new Route('/movie/ticket/ticket_page', ['controller'
 *********************************************************
 */
 
-$routes->add('esewa.payment.success', new Route('/movie/esewa/payment_success', ['controller' => 'home\EsewaController@payment_success']));
-$routes->add('esewa.payment.failled', new Route('/movie/esewa/payment_failled', ['controller' => 'home\EsewaController@payment_failled']));
+$routes->add('esewa.payment.success', new Route('/movie/page/esewa_payment_success', ['controller' => 'home\EsewaController@payment_success']));
+$routes->add('esewa.payment.failled', new Route('/movie/page/esewa_payment_failed', ['controller' => 'home\EsewaController@payment_failled']));
 
 
 

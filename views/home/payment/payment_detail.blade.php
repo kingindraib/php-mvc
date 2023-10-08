@@ -4,7 +4,7 @@
 <div class="container-md mt-4">
     <div class="row">
         <div class="col-md-5 ml-4">
-            <form action="" class="payment_form">
+            {{-- <form action="" class="payment_form"> --}}
                 <h2>Payment Confirm</h2>
                 <div class="ticket_payment">
                     <h3>Ticket Detail</h3>
@@ -26,26 +26,27 @@
                     <h2>Grand Total <span>Rs.{{ total_selected_seat_price(); }}</span></h2>
 
                     <form action="https://uat.esewa.com.np/epay/main" method="POST">
-                        <input value="{{ total_selected_seat_price(); }}" name="tAmt" type="hidden">
-                        <input value="{{ total_selected_seat_price(); }}" name="amt" type="hidden">
-                        <input value="0" name="txAmt" type="hidden">
-                        <input value="0" name="psc" type="hidden">
-                        <input value="0" name="pdc" type="hidden">
-                        <input value="EPAYTEST" name="scd" type="hidden">
-                        <input value="{{ generate_random_string(); }}" name="pid" type="hidden">
-                        <input value="{{ url('page/esewa_payment_success?q=su') }}" type="hidden" name="su">
-                        <input value="{{ url('page/esewa_payment_failed?q=fu') }}" type="hidden" name="fu">
-                        <!-- <input value="Submit" type="submit"> -->
-                        <div class="btn-group">
-                            <button class="btn btn-danger btn-buy" type="submit">Pay from Esewa</button>
-                        </div>
-                        </a>
-        
-                        <br>
+                            <input value="{{ total_selected_seat_price(); }}" name="tAmt" type="hidden">
+                            <input value="{{ total_selected_seat_price(); }}" name="amt" type="hidden">
+                            <input value="0" name="txAmt" type="hidden">
+                            <input value="0" name="psc" type="hidden">
+                            <input value="0" name="pdc" type="hidden">
+                            <input value="EPAYTEST" name="scd" type="hidden">
+                            <input value="{{ generate_random_string(); }}" name="pid" type="hidden">
+                            <input value="{{ url('page/esewa_payment_success?q=su') }}" type="hidden" name="su">
+                            <input value="{{ url('page/esewa_payment_failed?q=fu') }}" type="hidden" name="fu">
+                            <!-- <input value="Submit" type="submit"> -->
+                            <div class="btn-group">
+                                {{-- <button class="btn btn-danger btn-buy" type="submit">Pay from Esewa</button> --}}
+                                <input value="Submit" type="submit" class="btn btn-danger btn-buy">
+                            </div>
+                            </a>
+            
+                            <br>
                       </form>
                
                 </div>
-            </form>    
+            {{-- </form>     --}}
         </div>
 		<div class="col-md-5 mr-4">
 			<div class="row ticket-main">

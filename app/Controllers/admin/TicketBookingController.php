@@ -11,7 +11,8 @@ class TicketBookingController extends Controller{
 
     public function index(RouteCollection $routes)
     {
-        $booking = Account::get();
+        $booking = Account::all();
+        // dd($booking);
         $data = 1;
         return view('admin.ticket_settings.booking.index',compact('booking','data'));
     }

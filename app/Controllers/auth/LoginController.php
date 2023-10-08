@@ -49,7 +49,12 @@ class LoginController extends Controller
         //    die();
            if($auth['success'] == true){
             // echo true;
-            return route('admin/dashboard');
+            if(Auth()->user_type==1){
+                return route('admin/dashboard');
+            }else{
+                return route('user/dashboard');
+            }
+            
            }else{
             // print_r($auth);
             // echo "false";
@@ -80,6 +85,7 @@ class LoginController extends Controller
             }
             $data = the_post();
             $data['password'] = md5(the_post('password'));
+            $data['user_type'] = 0;
             // print_r(the_post());
             // echo "<pre>";
             $insert = User::create($data);

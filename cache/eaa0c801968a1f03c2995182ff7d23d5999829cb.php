@@ -14,11 +14,9 @@
             <div class="sidebar-item">
                 <a href="<?php echo e(url('user/dashboard/user_history')); ?>">User History</a>
             </div>
+            
             <div class="sidebar-item">
-                <a href="">Change Password</a>
-            </div>
-            <div class="sidebar-item">
-                <a href="">FAQs</a>
+                <a href="<?php echo e(url('faq')); ?>">FAQs</a>
             </div>
             <div class="sidebar-item">
                 <a href="<?php echo e(url('logout')); ?>">Logout</a>

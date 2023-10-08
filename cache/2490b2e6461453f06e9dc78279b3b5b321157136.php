@@ -19,12 +19,7 @@ use App\Components\Form;
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td colspan="6">User History Will available only 7 days</td>          
             </tr>
         </tbody>
     </table>

@@ -7,7 +7,7 @@ use App\Models\Movie;
 class Order extends Model{
     
     protected static $table ='orders';
-    protected static $fillable = ['user_id','movie_id','screen_id','show_id','seat_id','amount','status'];
+    protected static $fillable = ['user_id','movie_id','screen_id','show_id','seat_id','amount','status','payment_method'];
 
     // public static function movie_name(){
         // echo "true";
