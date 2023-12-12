@@ -22,7 +22,7 @@ $i = 1;
                             <th>Movie Name</th>
                             <th>Product ID</th>
                             <th>Total Amount</th>
-                            <th>Order ID</th>
+                            <th>Order Seat</th>
                             <th>Booked Date</th>
                             <th>Status</th>
                            
@@ -32,11 +32,23 @@ $i = 1;
                         <?php $__empty_1 = true; $__currentLoopData = $booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($i++); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
-                            <td><?php echo e($data['user_id']); ?></td>
+                            <td><?php echo e(user_detail($data['user_id'])->first_name); ?></td>
+                            <td><?php echo e(movie_detail($data['movie_id'])->movie_name); ?></td>
+                            <td><?php echo e($data['pid']); ?></td>
+                            <td><?php echo e($data['totalAmount']); ?></td>
+                            <td>
+                            <?php 
+                            $dataArray = json_decode($data['order_id'], true);
+                            // print_r($dataArray[0]['seat_id']);
+                            foreach($dataArray as $items):
+                            ?>
+                            <?php echo e(seat_detail($items['seat_id'])->seat_name); ?> , 
+                            <?php endforeach; ?>
+                            </td>
+                            <td>
+                                <?php echo e(carbon_date_formattor($data['created_at'])); ?>
+
+                            </td>
                             <td>
                                 <?php if($data['status'] == 'draft'): ?>
                                 <span class='badge bg-danger'><?php echo e($data['status']); ?></span>

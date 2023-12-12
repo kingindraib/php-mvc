@@ -1,7 +1,8 @@
 <aside id="mobile-menu">
     <div class="top">
         <div class="logo">
-            <img src="<?php echo e(url('public/admin/images/logo.png')); ?>">
+            <img src="<?php echo e(url(_site_settings('favicon'))); ?>">
+            
             <h2>IB <span class="danger">ADMIN</span></h2>
         </div>
         <div class="close" id="close-btn">

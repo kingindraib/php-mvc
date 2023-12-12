@@ -1,6 +1,6 @@
 
-<?php $__env->startSection('title','Post Management'); ?>
-<?php $__env->startSection('page_title','Post Category'); ?>
+<?php $__env->startSection('title','Faq Management'); ?>
+<?php $__env->startSection('page_title','Faq Category'); ?>
 <?php
 use App\Components\Form;
 ?>

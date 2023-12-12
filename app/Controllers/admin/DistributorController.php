@@ -52,6 +52,7 @@ class DistributorController extends Controller
 
     public function edit(int $id, RouteCollection $routes)
     {
+        // dd(true);
         $distributor = Distributor::find($id);
         $data = ['data'=>$distributor];
         return view('admin.distributor.edit',$data);

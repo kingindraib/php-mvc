@@ -360,6 +360,8 @@ $routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$
 $routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
 $routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
 $routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
+
+
 /*
 *********************************************************
 *********************************************************
@@ -370,6 +372,22 @@ $routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['control
 $staticurl ='/movie/admin/dashboard/faq/';
 $staticroute = 'admin.faq.';
 $staticcontroller = 'admin\FaqController@';
+$routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
+$routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
+$routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));
+$routes->add($staticroute.'delete', new Route($staticurl.'delete/{id}',['controller'=>$staticcontroller.'delete']));
+$routes->add($staticroute.'edit', new Route($staticurl.'edit/{id}',['controller'=>$staticcontroller.'edit']));
+$routes->add($staticroute.'update', new Route($staticurl.'update/{id}',['controller'=>$staticcontroller.'update']));
+/*
+*********************************************************
+*********************************************************
+               SITE SETTINGS MANAGEMENT  ROUTE
+*********************************************************
+*********************************************************
+*/
+$staticurl ='/movie/admin/dashboard/sitesettings/';
+$staticroute = 'admin.sitesettings.';
+$staticcontroller = 'admin\SiteSettingsController@';
 $routes->add($staticroute.'index',new Route($staticurl.'index',['controller'=>$staticcontroller.'index']));
 $routes->add($staticroute.'create', new Route($staticurl.'create',['controller'=>$staticcontroller.'create']));
 $routes->add($staticroute.'store', new Route($staticurl.'store',['controller'=>$staticcontroller.'store']));

@@ -1,7 +1,8 @@
 <aside id="mobile-menu">
     <div class="top">
         <div class="logo">
-            <img src="{{url('public/admin/images/logo.png')}}">
+            <img src="{{url(_site_settings('favicon'))}}">
+            {{-- <img src="{{url('public/admin/images/logo.png')}}"> --}}
             <h2>IB <span class="danger">ADMIN</span></h2>
         </div>
         <div class="close" id="close-btn">

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Movie || <?php echo $__env->yieldContent('title'); ?></title>
+	<title><?php echo e(_site_settings('site_title')); ?> || <?php echo $__env->yieldContent('title'); ?></title>
 
     <?php echo $__env->make('admin.includes.css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>

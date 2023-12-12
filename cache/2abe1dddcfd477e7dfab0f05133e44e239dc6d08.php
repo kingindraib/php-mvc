@@ -22,7 +22,7 @@ use App\Components\Form;
                         <div class="form-group">
                             <label for="">Select Category</label>
                             <select name="category_id" id="" class="form-control">
-                                <option value="$data->category_id"><?php echo e($data->category_id); ?></option>
+                                <option value="<?php echo e($data->category_id); ?>"><?php echo e($data->category_id); ?></option>
                                 <?php $__currentLoopData = getCategory(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($category['id']); ?>"><?php echo e($category['category_name']); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

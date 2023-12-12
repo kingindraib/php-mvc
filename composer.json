@@ -1,6 +1,6 @@
 {
     "name": "movie/movie",
-    "description": "Simple MVC PHP framework: for divya gyan college project",
+    "description": "Simple MVC PHP framework: for divya gyan college project Under The supervision of Sirish Timilsina Sir",
     "autoload": {
         "psr-4": {
             "App\\": "app/",

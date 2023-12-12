@@ -1,0 +1,67 @@
+
+<?php $__env->startSection('title','Site Settings'); ?>
+<?php $__env->startSection('page_title','Site Settings'); ?>
+<?php
+use App\Components\Form;
+?>
+<?php $__env->startSection('body'); ?>
+<div class="container-md">
+    <div class="row">
+        <div class="col-md-8 mt-3">
+            <a href="<?php echo e(url('admin/dashboard/sitesettings/index')); ?>" class="btn btn-success">back <i class="fa-solid fa-backward"></i></a>
+        </div>
+        <div class="col-md-10 m-auto">
+            <?php echo $__env->make('message.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <form action="<?php echo e(url('admin/dashboard/sitesettings/store')); ?>" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <?php echo e(Form::formgroup('Site Title','text','site_title','','',$data['site_title'])); ?>
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <label for="">Logo</label>
+                        <input class="form-control" type="file" id="" onchange="imagepreview()" name="logo">
+                        <?php if(!empty($data['logo'])): ?>
+                        <img id="imagepriview" src="<?php echo e(url($data['logo'])); ?>" class="ib-img" width="100%">
+                    <?php endif; ?>
+                        <img id="imagepriview" src="" class="ib-img" width="100%">
+                    </div>
+                    <div class="col-md-6">
+                        <?php echo e(Form::formgroup('Tagline','text','tagline','','',$data['tagline'])); ?>
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <label for="">fabicon</label>
+                        <input class="form-control" type="file" id="" onchange="fabconPreview()" name="favicon">
+                        <?php if(!empty($data['favicon'])): ?>
+                            <img id="fabconPreview" src="<?php echo e(url($data['favicon'])); ?>" class="ib-img" style="width: 200px">
+                        <?php endif; ?>
+                        <img id="fabconPreview" src="" class="ib-img" width="100%">
+                    </div>
+
+                 
+                    <?php echo e(unset_session('old')); ?>
+
+                    <?php echo e(unset_session('errors')); ?>
+
+                    <div class="col-md-12">
+                        <button class="btn btn-danger" name="status" value="draft">Update</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('scripts'); ?>
+<script>
+    function imagepreview() {
+            imagepriview.src = URL.createObjectURL(event.target.files[0]);
+        }
+    function fabconPreview() {
+        fabconPreview.src = URL.createObjectURL(event.target.files[0]);
+        }
+</script>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\php xampp\xampp second\htdocs\movie\views/admin/settings/site_settings/index.blade.php ENDPATH**/ ?>

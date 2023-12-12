@@ -21,7 +21,7 @@ use App\Components\Form;
                         <div class="form-group">
                             <label for="">Select Category</label>
                             <select name="category_id" id="" class="form-control">
-                                <option value="$data->category_id">{{ $data->category_id }}</option>
+                                <option value="{{$data->category_id}}">{{ $data->category_id }}</option>
                                 @foreach(getCategory() as $category)
                                 <option value="{{ $category['id'] }}">{{ $category['category_name'] }}</option>
                                 @endforeach

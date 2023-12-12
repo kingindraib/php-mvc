@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Movie || @yield('title')</title>
+	<title>{{ _site_settings('site_title') }} || @yield('title')</title>
 
     @include('admin.includes.css')
 </head>

@@ -17,6 +17,7 @@ use App\Models\Seat;
 use App\Models\Order;
 use Carbon\Carbon;
 use App\Models\Movie;
+use App\Models\SiteSetting;
 
 
 use App\Provider\DatabaseProvider;
@@ -319,3 +320,58 @@ if(!function_exists('generate_random_string')){
         return $randomString;
     }
 }
+
+if(!function_exists('total_movie')){
+    function total_movie() {
+       $total = Movie::count();
+    //    dd(2);
+    return $total;
+    }
+  }
+
+  if(!function_exists('total_user')){
+    function total_user() {
+       $total = User::count();
+    //    dd(2);
+    return $total;
+    }
+  
+  }
+
+  if(!function_exists('total_order')){
+    function total_order() {
+       $total = Order::count();
+    //    dd(2);
+    return $total;
+    }
+  
+  }
+
+
+  if(!function_exists('_site_settings')){
+    function _site_settings($meta_key){
+        $data =SiteSetting::where('meta_key','=',$meta_key)->first();
+        if(isset($data->scalar)){
+            return NULL;
+        }else{
+            return $data->meta_value;
+        }
+        
+    }
+  }
+
+  if(!function_exists('site_settings_detail')){
+    function site_settings_detail($meta_key){
+        $data =SiteSetting::where('meta_key','=',$meta_key)->first();
+        return $data;
+    }
+  }
+
+
+  if(!function_exists('user_detail')){
+    function user_detail($user_id){
+        $user = User::findorFail($user_id);
+        return $user;
+    
+    }
+  }

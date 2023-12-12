@@ -18,7 +18,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <a href="{{url('admin/dashboard/movie/settngs/screen/index')}}">
                     <div class="card">
                         <div class="container-box">
@@ -31,9 +31,9 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> --}}
             <div class="col-md-4">
-                <a href="">
+                <a href="{{ url('admin/dashboard/sitesettings/index') }}">
                     <div class="card">
                         <div class="container-box">
                             <div class="icon">

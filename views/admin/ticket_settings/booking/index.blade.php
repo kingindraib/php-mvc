@@ -24,7 +24,7 @@ $i = 1;
                             <th>Movie Name</th>
                             <th>Product ID</th>
                             <th>Total Amount</th>
-                            <th>Order ID</th>
+                            <th>Order Seat</th>
                             <th>Booked Date</th>
                             <th>Status</th>
                            
@@ -34,11 +34,22 @@ $i = 1;
                         @forelse($booking as $data)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $data['user_id'] }}</td>
-                            <td>{{ $data['user_id'] }}</td>
-                            <td>{{ $data['user_id'] }}</td>
-                            <td>{{ $data['user_id'] }}</td>
-                            <td>{{ $data['user_id'] }}</td>
+                            <td>{{ user_detail($data['user_id'])->first_name }}</td>
+                            <td>{{ movie_detail($data['movie_id'])->movie_name }}</td>
+                            <td>{{ $data['pid'] }}</td>
+                            <td>{{ $data['totalAmount'] }}</td>
+                            <td>
+                            <?php 
+                            $dataArray = json_decode($data['order_id'], true);
+                            // print_r($dataArray[0]['seat_id']);
+                            foreach($dataArray as $items):
+                            ?>
+                            {{seat_detail($items['seat_id'])->seat_name}} , 
+                            <?php endforeach; ?>
+                            </td>
+                            <td>
+                                {{ carbon_date_formattor($data['created_at']) }}
+                            </td>
                             <td>
                                 @if($data['status'] == 'draft')
                                 <span class='badge bg-danger'>{{ $data['status'] }}</span>

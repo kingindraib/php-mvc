@@ -1,7 +1,8 @@
 <header>
     <div class="header">
         <div class="logo">
-            <img src="<?php echo e(url('public/home/images/logo.png')); ?>">
+            <img src="<?php echo e(url(_site_settings('logo'))); ?>">
+            
         </div>
         <div class="menu">
             <div class="mobile_menu" style="display: none;">

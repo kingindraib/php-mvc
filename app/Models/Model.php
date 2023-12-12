@@ -356,7 +356,14 @@ class Model extends DatabaseProvider{
         $databaseProvider = new DatabaseProvider();
         $db = $databaseProvider->getDB();
         $table =static::$table;
+        // dd($table);
         $sql = "SELECT COUNT(*) as count FROM {$table}";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        // return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $count;
+
     }
 
     public static function all(){
@@ -377,17 +384,17 @@ class Model extends DatabaseProvider{
      * model class function
      */
 
-     public function belongsTo($relatedModel, $foreignKey) {
-        $relatedTable = (new $relatedModel($this->db))->getTable();
-        $relatedKey = 'id';
-        return (new QueryBuilder($this->db, $relatedTable))->where($relatedKey, '=', $this->$foreignKey)->get();
-    }
+    //  public function belongsTo($relatedModel, $foreignKey) {
+    //     $relatedTable = (new $relatedModel($this->db))->getTable();
+    //     $relatedKey = 'id';
+    //     return (new QueryBuilder($this->db, $relatedTable))->where($relatedKey, '=', $this->$foreignKey)->get();
+    // }
 
-    public function hasMany($relatedModel, $foreignKey) {
-        $relatedTable = (new $relatedModel($this->db))->getTable();
-        $localKey = 'id';
-        return (new QueryBuilder($this->db, $relatedTable))->where($foreignKey, '=', $this->$localKey)->get();
-    }
+    // public function hasMany($relatedModel, $foreignKey) {
+    //     $relatedTable = (new $relatedModel($this->db))->getTable();
+    //     $localKey = 'id';
+    //     return (new QueryBuilder($this->db, $relatedTable))->where($foreignKey, '=', $this->$localKey)->get();
+    // }
 
 }
 
